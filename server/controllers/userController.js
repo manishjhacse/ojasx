@@ -2,10 +2,20 @@ const { User } = require("../models/userModel");
 const sendMail = require("../utills/sendEmail");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cloudinary = require("cloudinary").v2;
 require("dotenv").config();
-
+//check is file type support or not
 function isFileTypeSupported(fileType, supportedFiles) {
   return supportedFiles.includes(fileType);
+}
+//upload image to cloudinary
+async function uploadFileToCloudinary(file, folder, quality) {
+  const options = { folder };
+  options.resource_type = "auto";
+  if (quality) {
+    options.quality = quality;
+  }
+  return await cloudinary.uploader.upload(file.tempFilePath, options);
 }
 // signup controller
 exports.signup = async (req, res) => {
@@ -32,7 +42,6 @@ exports.signup = async (req, res) => {
         message: "OTP expired",
       });
     }
-
     const supportedFiles = ["jpg", "jpeg", "png"];
     let imageurl =
       "https://res.cloudinary.com/dfrcswf0n/image/upload/v1722092104/RoomImages/vgwtyhexx9ysttmcrrxe.png";
@@ -44,7 +53,8 @@ exports.signup = async (req, res) => {
           message: "file format not supported",
         });
       }
-      const response = await uploadFileToCloudinary(file, "RoomImages");
+      const response = await uploadFileToCloudinary(file, "User-Profile");
+      console.log("ok");
       imageurl = response?.secure_url;
     }
     let hashedPassword;
@@ -175,6 +185,89 @@ exports.login = async (req, res) => {
       success: false,
       message: "Login failure, Try Again",
       Error: err,
+    });
+  }
+};
+
+//otp to changepassword
+
+exports.sendOtpToChangePassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    email.toLowerCase();
+    const code = Math.floor(1000 + Math.random() * 9000);
+    otp = {
+      code,
+      validTime: new Date(Date.now() + 10 * 60 * 1000),
+    };
+    const existingUser = await User.findOne({ email });
+    if (!existingUser) {
+      return res.status(401).json({
+        success: false,
+        message: "User not exist with this email",
+      });
+    }
+
+    const user = await User.findOneAndUpdate({ email }, { otp }, { new: true });
+    const mailMessage = `your otp to change password is ${otp.code}`;
+    const result = await sendMail(email, "verify email", mailMessage);
+
+    if (result.success) {
+      return res.status(201).json(result);
+    } else {
+      return res.status(501).json(result);
+    }
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "cat't sent OTP",
+      Error: err,
+    });
+  }
+};
+
+//change password
+exports.changePassword = async (req, res) => {
+  try {
+    const { email, password, code } = req.body;
+    email.toLowerCase();
+    const existingUser = await User.findOne({ email });
+    if (existingUser.otp.code != code) {
+      return res.status(400).json({
+        success: false,
+        message: "wrong OTP",
+      });
+    }
+    if (new Date(Date.now()) > existingUser.otp.validTime) {
+      return res.status(400).json({
+        success: false,
+        message: "OTP expired",
+      });
+    }
+    let hashedPassword;
+    try {
+      hashedPassword = await bcrypt.hash(password, 10);
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Error in hashing password",
+        error: err.message,
+      });
+    }
+    const user = await User.findOneAndUpdate(
+      { email },
+      { password: hashedPassword },
+      { new: true }
+    );
+    return res.status(200).json({
+      success: true,
+      message: "Password changed",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Password can't change, Try again",
+      error: err,
     });
   }
 };
