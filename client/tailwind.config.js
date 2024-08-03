@@ -12,5 +12,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [nextui()],
+  plugins: [nextui(), require('daisyui'),],
 };
