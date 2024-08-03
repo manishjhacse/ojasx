@@ -2,7 +2,7 @@
 import React from "react";
 import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
 
-export default function App() {
+export default function App({event}) {
   return (
     <div className="max-w-[900px] h-fit px-3 ">
       <Card className="col-span-12 sm:col-span-4 h-[300px]">
@@ -18,10 +18,10 @@ export default function App() {
           isZoomed
           width={240}
           alt="NextUI Fruit Image with Zoom"
-          src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+          src={event.poster}
         />
         <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-          <p className="text-tiny text-white/80">Available soon.</p>
+          <p className="text-tiny text-black">{event.event_name}</p>
           <Button
             className="text-tiny text-white bg-black/20"
             variant="flat"
