@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.4.6",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.2",
+    "framer-motion": "^11.3.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
