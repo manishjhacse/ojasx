@@ -6,6 +6,7 @@ export default function HomePage() {
     <div>
         {/* <Events/> */}
         <Hero/>
+        <Events/>
     </div>
   )
 }

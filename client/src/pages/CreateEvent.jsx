@@ -3,11 +3,13 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 export default function CreateEvent() {
   const [formData, setFormData] = useState({
+    event_name: "",
     about: "",
-    registration_price:"",
+    registration_price: "",
     event_managers: { name: "", mobile: "", email: "" },
     winner_prize: "",
     runnerup_prize: "",
+    category: "",
     image: null,
   });
   const [message, setMessage] = useState("");
@@ -41,6 +43,8 @@ export default function CreateEvent() {
       "event_managers",
       JSON.stringify(formData.event_managers)
     );
+    formDataToSend.append("category", formData.category);
+    formDataToSend.append("event_name", formData.event_name);
     formDataToSend.append("registration_price", formData.registration_price);
     formDataToSend.append("winner_prize", formData.winner_prize);
     formDataToSend.append("runnerup_prize", formData.runnerup_prize);
@@ -66,11 +70,13 @@ export default function CreateEvent() {
   }
   function resetFormData() {
     const emptyFormData = {
+      event_name: "",
       about: "",
-      registration_price:"",
+      registration_price: "",
       event_managers: { name: "", mobile: "", email: "" },
       winner_prize: "",
       runnerup_prize: "",
+      category: "",
       image: null,
     };
     setFormData(emptyFormData);
@@ -85,6 +91,18 @@ export default function CreateEvent() {
       className="text-white bg-black h-screen flex flex-col justify-center items-center gap-3"
       onSubmit={handleSubmit}
     >
+      <div className="text-white w-1/2 flex flex-col">
+        <label htmlFor="event_name">event name</label>
+        <input
+          type="text"
+          id="event_name"
+          className="px-2 py-1.5 rounded-md outline-none border border-white bg-transparent text-white resize-none"
+          name="event_name"
+          placeholder="event_name"
+          value={formData.event_name}
+          onChange={handleFormData}
+        />
+      </div>
       <div className="text-white w-1/2 flex flex-col">
         <label htmlFor="about">About</label>
         <textarea
@@ -142,6 +160,20 @@ export default function CreateEvent() {
             name="event_managers.email"
             placeholder="Event Manager Name"
             value={formData.event_managers.email}
+            onChange={handleFormData}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="category">
+            event category<span className="text-black">*</span>
+          </label>
+          <input
+            id="category"
+            className="px-2 py-1.5 md:w-[150px] w-[200px] rounded-md outline-none border border-white bg-transparent text-white"
+            type="text"
+            name="category"
+            placeholder="Event category"
+            value={formData.category}
             onChange={handleFormData}
           />
         </div>
