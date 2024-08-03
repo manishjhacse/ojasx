@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-export default function App() {
+const Events = () => {
   return (
-    <div className=''>App</div>
+    <div>Events</div>
   )
 }
+
+export default Events
+
