@@ -19,8 +19,10 @@ app.use(
 );
 require("./config/cloudinary").cloudinaryConnect();
 require("./config/connectDB").connectDB();
-const userRouter=require('./routes/userRoutes')
-app.use("/api/v1",userRouter)
+const userRouter = require("./routes/userRoutes");
+const eventRouter = require("./routes/eventRoute");
+app.use("/api/v1", userRouter);
+app.use("/api/v1", eventRouter);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);

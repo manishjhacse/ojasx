@@ -11,18 +11,13 @@ const eventSchema = new mongoose.Schema({
   about: { type: String },
   registration_price: { type: Number, required: true },
   event_date: { type: Date, default: Date.now },
-  event_managers: [
-    {
-      name: { type: String },
-      email: { type: String },
-      phone: { type: String },
-    },
-  ],
-  prize: {
-    first_position: {},
-    second_position: {},
-    third_position: {},
+  event_managers: {
+    name: { type: String },
+    email: { type: String },
+    phone: { type: String },
   },
+  winner_prize:{type:String},
+  runnerup_prize:{type:String}
 });
 
 const Event = mongoose.model("Event", eventSchema);
