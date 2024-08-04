@@ -13,7 +13,7 @@ const Events = () => {
   }, [events]);
   return (
     <div className={`bg-black relative py-5 px-5  flex justify-center `}>
-    <h1 className=" absolute top-2 z-50 font-bold text-5xl  text-white ">Events</h1>
+      <h1 className=" absolute top-2 z-50 font-bold text-5xl  text-white ">Events</h1>
       <div className=" w-[900px] flex mb-9 mt-16 flex-wrap gap-4  justify-center">
         {eventsToShow.slice(0, 5)?.map((event) => (
           <Cards key={event._id} event={event} />
