@@ -12,5 +12,18 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [nextui(), require('daisyui'),],
+  plugins: [nextui({
+      themes: {
+        light: {
+          colors: {
+            primary: "#0072f5",
+          }
+        },
+        dark: {
+          colors: {
+            primary: "#0072f5",
+          }
+        },
+      },
+    }), require('daisyui'),],
 };
