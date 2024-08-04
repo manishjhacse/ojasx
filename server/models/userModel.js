@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {Event}=require("./eventModel")
+const { Event } = require("./eventModel");
 const userSchema = new mongoose.Schema({
   name: { type: String, trim: true },
   email: { type: String, trim: true },
@@ -11,16 +11,14 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   profile_pic: { type: String },
   college: { type: String },
+  registration_no:{type:String},
   events: [
-    {
-      eventId: {
+    
+      {eventId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Event",
-      },
-      eventName:{
-        type:String
-      }
-    },
+      },}
+    
   ],
 });
 
