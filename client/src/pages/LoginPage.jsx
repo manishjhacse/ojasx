@@ -41,16 +41,18 @@ export default function LoginPage() {
 
     }
     return (
-       <div className="w-screen h-screen flex justify-center items-center">
+       <div className="w-screen h-screen flex justify-center items-center ">
+       <h1 className="text-black ">Log In</h1>
          <form
-            className="text-black flex flex-col py-20 justify-center items-center gap-3"
+            className="text-black flex flex-col py-10 justify-center w-96 items-center bg-white border-3 rounded-3xl border-yellow-500 gap-5"
             onSubmit={handleLogin}
         >
-            <div className="text-white">
-                <label htmlFor="email">Email</label>
+        <h1 className="text-black font-extrabold ">Log In</h1>
+            <div className="text-black flex flex-col items-start">
+                <label htmlFor="email" className="text-lg" >Email</label>
                 <input
                     id="email"
-                    className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+                    className="px-2 py-1.5 w-72 outline-none border border-black bg-transparent text-black rounded-3xl "
                     type="email"
                     placeholder="Enter your Email"
                     name="email"
@@ -58,11 +60,11 @@ export default function LoginPage() {
                     onChange={handleChange}
                 />
             </div>
-            <div className="text-white">
-                <label htmlFor="password">Password</label>
+            <div className="text-black flex flex-col items-start">
+                <label htmlFor="password" className="text-lg" >Password</label>
                 <input
                     id="password"
-                    className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+                    className="px-2 py-1.5 w-72 outline-none border border-black bg-transparent text-black rounded-3xl "
                     type="password"
                     name="password"
                     placeholder="Enter your password"
@@ -70,16 +72,16 @@ export default function LoginPage() {
                     onChange={handleChange}
                 />
             </div>
-            <button className="px-2 py-1.5 rounded-md outline-none border text-white border-black hover:bg-purple-800 hover:border-purple-800 transition-all duration-200">
+            <button className="px-2 py-1.5 rounded-3xl outline-none border w-60 bg-blue-800 text-black border-black hover:bg-purple-800 hover:border-purple-800 transition-all duration-200 font-extrabold">
                 Login
             </button>
             <Link
                 to="/changepassword"
-                className="w-full text-center text-white text-xs cursor-pointer"
+                className="w-full text-center text-black text-md cursor-pointer"
             >
                 Forgot password?
             </Link>
-            <div className="text-[15px] text-white text-center">
+            <div className="text-[15px] text-black text-center">
                 Don't have an account?{" "}
                 <Link to="/signup" className="font-semibold cursor-pointer">
                     <p>Sign up</p>
