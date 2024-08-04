@@ -3,13 +3,10 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import CreateEvent from "./pages/CreateEvent";
 import HomePage from "./pages/HomePage";
-<<<<<<< HEAD
 import SignUp from "./pages/SignUpPage/SignUp";
-=======
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addEvents } from "./store/eventSlice";
->>>>>>> b1506782f70d3ea7302ee8d9c551683d5195fe8e
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
