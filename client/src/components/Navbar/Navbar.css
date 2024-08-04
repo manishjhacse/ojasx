@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
+.hamburger {
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    margin: 5px;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.login-icon img {
+    height: 30px;
+    cursor: pointer;
+}
+
+.contact-link a {
+    text-decoration: none;
+}
+
+.contact-link img {
+    height: 30px;
+    cursor: pointer;
+}
+
+.slide-menu {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgb(55, 53, 53);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.slide-menu-content {
+    padding: 20px;
+}
+
+.curve-button {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: #f0c000;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.curve-button:hover {
+    background-color: #c3711a;
+    text-decoration: none;
+}
+
+.slide-menu hr {
+    margin: 20px 0;
+}
+
+.slide-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.slide-menu ul li {
+    margin-bottom: 10px;
+}
+
+.slide-menu ul li a {
+    text-decoration: none;
+    color: rgb(237, 230, 230);
+    font-size: 18px;
+}
+
+.slide-menu ul li a:hover {
+    color: #c68a71;
+}
+.scroll-to-top {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: #b83b15;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.scroll-to-top:hover {
+    background-color: #1c1c1c;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #271d1d;
+}
+
+.form-container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}

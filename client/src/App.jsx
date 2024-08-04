@@ -4,8 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import CreateEvent from "./pages/CreateEvent";
 import HomePage from "./pages/HomePage";
 import SignUp from "./pages/SignUpPage/SignUp";
-import { useDispatch } from "react-redux";
-import axios from "axios";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addEvents } from "./store/eventSlice";
