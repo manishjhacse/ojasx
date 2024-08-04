@@ -9,6 +9,8 @@ import { addEvents } from "./store/eventSlice";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import ChangePassword from "./pages/ChangePassword";
+import Navbar from './components/Navbar/Navbar.jsx';
+import { FaPencilAlt } from "react-icons/fa";
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,13 +22,15 @@ export default function App() {
     getAllEvents();
   }, []);
   return (
-    <div className="prevent-select">
+    <div className="prevent-select overflow-hidden px-2">
+      <p className="py-[43px]"></p>
+      <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/createevent" element={<CreateEvent />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LoginPage/>} />
-        <Route path="/changepassword" element={<ChangePassword/>} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/changepassword" element={<ChangePassword />} />
 
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />

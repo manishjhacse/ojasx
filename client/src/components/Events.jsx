@@ -34,7 +34,7 @@ const Events = () => {
 
       <Button
         radius="full"
-        className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg absolute bottom-0 z-20 font-semibold"
+        className="w-fit bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg absolute bottom-0 z-20 font-semibold"
       >
         More Events
       </Button>

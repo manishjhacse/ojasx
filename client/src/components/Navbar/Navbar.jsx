@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar text-3xl">
+            <nav className="navbar px-3 pr-6 text-3xl fixed top-0 z-20">
                 <div className="hamburger" onClick={toggleMenu}>
                     {!isMenuOpen ? <FaBars /> : <RxCross2 />}
                 </div>
@@ -45,7 +45,7 @@ const Navbar = () => {
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">FAQ's</a></li>
                     </ul>
-                    <button className="scroll-to-top" onClick={closeMenu}>Go Back</button>
+                    <button className="scroll-to-top button" onClick={closeMenu}>Go Back</button>
                 </div>
             </div>
         </>
