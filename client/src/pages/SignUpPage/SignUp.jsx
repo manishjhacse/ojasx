@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./SignUpview.css";
+import axios from "axios";
 export default function SignUp() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
     "Select Your College Name"
   );
+
   const [options] = useState([
     "	 BHAGALPUR COLLEGE OF ENGINEERING, BHAGALPUR",
     "	 GAYA COLLEGE OF ENGINEERING, GAYA",
