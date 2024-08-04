@@ -28,17 +28,16 @@ const FAQ = () => {
                 <div key={index} className="mb-4">
                     <button
                         onClick={() => toggleAnswer(index)}
-                        className="w-full text-left bg-black border border-opacity-30 border-gray-500 shadow-sm shadow-white p-4 rounded-md"
+                        className="w-full text-left bg-black shadow-md shadow-white p-4 rounded-md"
                     >
                         <span className="md:text-lg text-[14px] font-medium">{faq.question}</span>
                         <span className="float-right text-xl md:text-2xl">
-                            {activeIndex === index ? <FaChevronCircleUp/> : <FaChevronCircleDown/>}
+                            {activeIndex === index ? <FaChevronCircleUp /> : <FaChevronCircleDown />}
                         </span>
                     </button>
                     <div
-                        className={`overflow-hidden transition-all duration-900 ${
-                            activeIndex === index ? ' max-h-[1000px]' : 'max-h-0'
-                        }`}
+                        className={`overflow-hidden transition-all duration-700 ${activeIndex === index ? ' md:max-h-[150px] max-h-[250px]' : 'max-h-0'
+                            }`}
                     >
                         <div className="bg-black md:text-base text-[15px] p-4 rounded-md shadow-md mt-2">
                             <p>{faq.answer}</p>
