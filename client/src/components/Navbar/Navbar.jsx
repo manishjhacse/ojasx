@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar px-3 pr-6 text-3xl fixed top-0 left-0 right-0 z-20">
+            <nav className="navbar px-3 pr-6 text-3xl fixed top-0 left-0 right-0 z-50">
                 <div className="hamburger" onClick={toggleMenu}>
                     {!isMenuOpen ? <FaBars /> : <RxCross2 />}
                 </div>

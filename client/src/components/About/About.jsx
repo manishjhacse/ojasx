@@ -15,7 +15,7 @@ const About = () => {
                 </div>
                 <div class="about-section">
                     <div class="about-text">
-                        <h2 class="about-heading">ABOUT</h2>
+                        <h2 class="about-heading font-bold md:font-extrabold">ABOUT</h2>
                         <p class="p-responsive">
                             OJAS'X is not just an event, it's an experience. From coding challenges to robotic competitions, from technical talks to hands-on workshops, OJAS'X offers something for everyone. Join us to explore the future of technology and unleash your potential. The event is designed to cater to various interests and skill levels, ensuring there's something for everyone. Whether you're a beginner or an expert, you'll find opportunities to learn, compete, and showcase your talents.
                         </p>
