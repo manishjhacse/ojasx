@@ -23,6 +23,8 @@ exports.addEvent = async (req, res) => {
       event_managers,
       winner_prize,
       runnerup_prize,
+      event_name,
+      category,
     } = req.body;
     const event_managersObj = JSON.parse(event_managers);
     const file = req.files?.image;
@@ -43,10 +45,12 @@ exports.addEvent = async (req, res) => {
     const event = await Event.create({
       about,
       registration_price,
-      event_managers:event_managersObj,
+      event_managers: event_managersObj,
       winner_prize,
       runnerup_prize,
-      poster:imageurl
+      poster: imageurl,
+      event_name,
+      category,
     });
 
     return res.status(201).json({
@@ -59,6 +63,60 @@ exports.addEvent = async (req, res) => {
       success: false,
       message: "Event not created, try again",
       error: err.message,
+    });
+  }
+};
+
+//getAllEvent
+exports.getAllEvent = async (req, res) => {
+  try {
+    const events = await Event.find();
+    if (!events || events === undefined) {
+      return res.status(404).json({
+        success: false,
+        message: "No event found",
+      });
+    } else {
+      return res.status(200).json({
+        success: true,
+        message: "Events found",
+        events: events,
+      });
+    }
+  } catch (err) {
+    return res.status(503).json({
+      success: false,
+      message: "Unable to fetches Events, try again",
+      error: err,
+    });
+  }
+};
+
+//get event by category
+exports.getEventsByCategory = async (req, res) => {
+  const { category } = req.params;
+
+  try {
+    const events = await Event.find({ category });
+
+    if (!events || events.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No events found for this category",
+      });
+    }
+
+    // Send the events as a response
+    res.status(200).json({
+      success: true,
+      message: `events of ${category} category`,
+      events,
+    });
+  } catch (error) {
+    console.error("Error fetching events by category:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
     });
   }
 };

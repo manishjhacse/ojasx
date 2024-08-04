@@ -1,14 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import Cards from "./Cards";
 import { Button } from "@nextui-org/react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Events = () => {
+  const events = useSelector((state) => state.events);
+  const [eventsToShow, setEventsToShow] = useState([]);
+  useEffect(() => {
+    setEventsToShow(events);
+  }, [events]);
   return (
-    <div className={`bg-gradient-to-r from-slate-900 to-slate-700 relative py-5 px-5  flex justify-center `}>
+    <div
+      className={`bg-gradient-to-r from-slate-900 to-slate-700 relative py-5 px-5  flex justify-center `}
+    >
       <div className=" w-[900px] flex mb-9 flex-wrap gap-4  justify-center">
-        {[1, 2, 3, 4, 5].map((event, index) => (
-          <Cards key={index} />
+        {eventsToShow.slice(0, 5)?.map((event) => (
+          <Cards key={event._id} event={event} />
         ))}
       </div>
 
