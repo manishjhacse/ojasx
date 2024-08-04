@@ -29,7 +29,7 @@ const Category = () => {
       <div className="relative w-fit mb-3 flex items-center justify-center">
         <Button
           onClick={prevSlide}
-          className="absolute left-0 p-2 bg-gray-700 bg-opacity-50 z-20 text-white rounded-full"
+          className="absolute w-fit left-0 p-2 bg-gray-700 bg-opacity-50 z-20 text-white rounded-full"
         >
           <IoIosArrowBack />
         </Button>
@@ -38,7 +38,7 @@ const Category = () => {
             <img
               src={
                 images[
-                  currentIndex === 0 ? images.length - 1 : currentIndex - 1
+                currentIndex === 0 ? images.length - 1 : currentIndex - 1
                 ]
               }
               alt="prev"
@@ -59,7 +59,7 @@ const Category = () => {
             <img
               src={
                 images[
-                  currentIndex === images.length - 1 ? 0 : currentIndex + 1
+                currentIndex === images.length - 1 ? 0 : currentIndex + 1
                 ]
               }
               alt="next"
@@ -69,7 +69,7 @@ const Category = () => {
         </div>
         <Button
           onClick={nextSlide}
-          className="absolute right-0 p-2 bg-gray-700 bg-opacity-50 z-20 text-white rounded-full"
+          className="absolute right-0 p-2 bg-gray-700 bg-opacity-50 z-20 w-fit text-white rounded-full"
         >
           <IoIosArrowForward />
         </Button>

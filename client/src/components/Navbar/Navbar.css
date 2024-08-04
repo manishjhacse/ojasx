@@ -152,7 +152,7 @@ h2 {
     border-radius: 5px;
 }
 
-button {
+.button {
     width: 100%;
     padding: 10px;
     border: none;
@@ -162,7 +162,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.button:hover {
     background-color: #45a049;
 }
 
