@@ -4,6 +4,7 @@ import Hero from '../components/Hero/Hero'
 import  Category  from '../components/Category'
 import About from '../components/About/About'
 import Navbar from '../components/Navbar/Navbar'
+import  Footer  from '../components/Footer'
 export default function HomePage() {
   return (
     <div>
@@ -13,6 +14,7 @@ export default function HomePage() {
         <Events/>
         <Category/>
         <About/>
+        <Footer/>
     </div>
   )
 }
