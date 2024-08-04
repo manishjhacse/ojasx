@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { IoIosContact } from "react-icons/io";
-import logo from "../About/logo.png"
+import logo from "../../assests/logo.png"
 import { useSelector } from 'react-redux';
 import { RxCross2 } from "react-icons/rx";
 import { FaBars } from "react-icons/fa";
@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar px-3 pr-6 text-3xl fixed top-0 z-20">
+            <nav className="navbar px-3 pr-6 text-3xl fixed top-0 left-0 right-0 z-20">
                 <div className="hamburger" onClick={toggleMenu}>
                     {!isMenuOpen ? <FaBars /> : <RxCross2 />}
                 </div>

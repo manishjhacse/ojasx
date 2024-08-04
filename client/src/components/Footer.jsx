@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import logo from '../assests/logo.png'
 export default function Footer() {
   return (
     <>
@@ -9,14 +10,16 @@ export default function Footer() {
             <div className="col-12 col-md-6 col-lg-3">
               <div className="text-center">
                 <img
-                  src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/ecommerce-website-logo-img.png"
+                  src={logo}
                   alt="Ecommerce Logo"
                   className="image-footer w-50"
                 />
               </div>
-              <div className="text-center p-3">
+              <div className="text-center p-3 flex flex-col items-start  gap-2">
                 <p className="footer-paragraph">Get in Touch</p>
-                <h1 className="footer-heading">darpan@aec.ac.in</h1>
+                <a className="footer-heading text-base text-white no-underline" href="mailto:ojasxbpmce2024@gmail.com">ojasxbpmce2024@gmail.com</a>
+                <a className="footer-heading text-base text-white no-underline" href="callto:6202586811">+91 6202586811</a>
+                {/* <h1 className="footer-heading">darpan@aec.ac.in</h1> */}
               </div>
             </div>
             <div className="col-12 col-md-6 col-lg-3">
@@ -31,8 +34,8 @@ export default function Footer() {
               <p className="footer-title">Events</p>
               <p className="footer-title">Contacts</p>
             </div>
-            <div className="col-12 col-md-6 col-lg-3">
-              <h1 className="footer-heading-title">#DARPAN2023</h1>
+            <div className="col-12 col-md-6 col-lg-3 flex flex-col items-start">
+              <h1 className="footer-heading-title">#OJAS'X24</h1>
               <div className="text-center p-3">
                 <a href="https://www.google.com">
                   <i className="fa-brands fa-google"></i>
