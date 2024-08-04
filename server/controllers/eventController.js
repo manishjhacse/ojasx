@@ -93,3 +93,30 @@ exports.getAllEvent = async (req, res) => {
 };
 
 //get event by category
+exports.getEventsByCategory = async (req, res) => {
+  const { category } = req.params;
+
+  try {
+    const events = await Event.find({ category });
+
+    if (!events || events.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No events found for this category",
+      });
+    }
+
+    // Send the events as a response
+    res.status(200).json({
+      success: true,
+      message: `events of ${category} category`,
+      events,
+    });
+  } catch (error) {
+    console.error("Error fetching events by category:", error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
