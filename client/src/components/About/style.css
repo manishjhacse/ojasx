@@ -129,7 +129,34 @@ body {
 }
 
 
-
+.aimate-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation:  marquee 10s linear forwards;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+.aimate-text-2 {
+    display: inline-block;
+    white-space: nowrap;
+    animation:  marquee2 10s linear forwards;
+  }
+  
+  @keyframes marquee2 {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
 
 @media (max-width: 768px) {
     .heading {
@@ -146,6 +173,17 @@ body {
 }
 
 @media (max-width: 480px) {
+    .aimate-text-2 {
+        display: inline-block;
+        white-space: nowrap;
+        animation:  marquee2 5s linear forwards;
+      }
+      .aimate-text {
+        display: inline-block;
+        white-space: nowrap;
+        animation:  marquee 5s linear forwards;
+      }
+      
     .heading {
         font-size: 1.5em;
     }
