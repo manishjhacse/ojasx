@@ -34,7 +34,7 @@ function Hero() {
   }, []);
 
   return (
-    <section className="text-white bg-black h-screen">
+    <section className="text-white bg-black h-screen mb-12">
       <div className=" text-center">
         <div className="font-bold uppercase text-xl md:text-2xl lg:text-3xl italic ">
           B.P. Mandal College of Engineering

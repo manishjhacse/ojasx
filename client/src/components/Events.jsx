@@ -12,10 +12,9 @@ const Events = () => {
     setEventsToShow(events);
   }, [events]);
   return (
-    <div
-      className={`bg-gradient-to-r from-slate-900 to-slate-700 relative py-5 px-5  flex justify-center `}
-    >
-      <div className=" w-[900px] flex mb-9 flex-wrap gap-4  justify-center">
+    <div className={`bg-black relative py-5 px-5  flex justify-center `}>
+    <h1 className=" absolute top-2 z-50 font-bold text-5xl  text-white ">Events</h1>
+      <div className=" w-[900px] flex mb-9 mt-16 flex-wrap gap-4  justify-center">
         {eventsToShow.slice(0, 5)?.map((event) => (
           <Cards key={event._id} event={event} />
         ))}
