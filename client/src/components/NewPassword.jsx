@@ -3,11 +3,11 @@ import React from "react";
 export default function NewPassword({ formData, handleChange }) {
     return (
         <div className="text-black flex flex-col justify-center items-center gap-3">
-            <div className="text-white">
-                <label htmlFor="code">OTP</label>
+            <div className="text-black">
+                <label htmlFor="code">OTP:</label>
                 <input
                     id="code"
-                    className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+                    className="px-2 mt-1 py-1.5 rounded-2xl outline-none border border-black bg-transparent text-black"
                     type="text"
                     name="code"
                     placeholder="Enter OTP"
@@ -15,11 +15,11 @@ export default function NewPassword({ formData, handleChange }) {
                     onChange={handleChange}
                 />
             </div>
-            <div className="text-white">
+            <div className="text-black">
                 <label htmlFor="password">Password</label>
                 <input
                     id="password"
-                    className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+                    className="px-2 mt-1 py-1.5 rounded-2xl outline-none border border-black bg-transparent text-black"
                     type="password"
                     name="password"
                     placeholder="Enter your password"
@@ -27,11 +27,11 @@ export default function NewPassword({ formData, handleChange }) {
                     onChange={handleChange}
                 />
             </div>
-            <div className="text-white">
+            <div className="text-black">
                 <label htmlFor="confirmPassword">Confirm password</label>
                 <input
                     id="confirmPassword"
-                    className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+                    className="px-2 mt-1 py-1.5 rounded-2xl outline-none border border-black bg-transparent text-black"
                     type="password"
                     name="confirmPassword"
                     placeholder="Confirm Password"

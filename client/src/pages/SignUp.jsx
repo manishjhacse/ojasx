@@ -132,17 +132,23 @@ export default function SignUp() {
   }
   // Css from here---->>>>
   return (
-    <div className="h-screen w-screen flex justify-center items-center bg-gray-600 ">
+    <div className="min-h-screen w-screen flex justify-center py-4 items-center ">
       <form
         action=""
-        className="text-black flex flex-col justify-center items-center gap-3"
+        className="text-black bg-white flex sm:w-80 md:w-96  h-fit   flex-col justify-center space-y-2 items-center border pt-1 pb-5 px-4 rounded-2xl"
       >
+        <h1 className="text-lg font-bold ">Register</h1>
         {/* name */}
-        <div className="text-white">
-          <label htmlFor="name">Name</label>
+        <div className="text-black flex  flex-col items-start w-fit">
+          <label
+            htmlFor="name"
+            className="p-2  border-black text-lg"
+          >
+            Name:
+          </label>
           <input
             id="name"
-            className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
             type="name"
             name="name"
             placeholder="Enter your Name*"
@@ -151,11 +157,16 @@ export default function SignUp() {
           />
         </div>
         {/* registration no */}
-        <div className="text-white">
-          <label htmlFor="registraion_no">Registration No.</label>
+        <div className="text-black flex flex-col items-start w-fit">
+          <label
+            htmlFor="registraion_no"
+            className="p-2  text-lg"
+          >
+            Registration No:
+          </label>
           <input
             id="registraion_no"
-            className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+            className="px-2 py-1.5 outline-none w-48 md:w-60 border border-black bg-transparent text-black rounded-full"
             type="text"
             name="registraion_no"
             placeholder="Enter Registraion No.*"
@@ -164,33 +175,43 @@ export default function SignUp() {
           />
         </div>
         {/* college */}
-        <select
-          id="college"
-          className="px-2 py-1.5 md:w-[150px] w-[200px] rounded-md outline-none border border-black bg-transparent text-white"
-          name="college"
-          value={formData.college}
-          onChange={handleChange}
-        >
-          <option className="md:w-[150px] bg-black w-[200px]" value="">
-            Select Your College
-          </option>
-          {collegeOptions.map((college) => {
-            return (
-              <option
-                className="md:w-[150px] bg-black  w-[200px]"
-                value={college}
-              >
-                {college}
-              </option>
-            );
-          })}
-        </select>
+        <div className="text-black flex flex-col items-start w-fit">
+        <label
+            htmlFor="college"
+            className="p-2  text-lg"
+          >
+            College:
+          </label>
+          <select
+            id="college"
+            className="px-2 py-1.5 w-48 md:w-60 outline-none border border-black  rounded-2xl bg-transparent text-black"
+            name="college"
+            value={formData.college}
+            onChange={handleChange}
+          >
+            <option className="sm:w-[50px] bg-black md:w-[200px]" value="">
+              Select Your College
+            </option>
+            {collegeOptions.map((college) => {
+              return (
+                <option
+                  className="md:w-[150px] bg-white  w-[200px]"
+                  value={college}
+                >
+                  {college}
+                </option>
+              );
+            })}
+          </select>
+        </div>
         {/* email */}
-        <div className="text-white">
-          <label htmlFor="email">Email</label>
+        <div className="text-black flex flex-col items-start w-fit">
+          <label htmlFor="email" className="p-2 text-lg">
+            Email:
+          </label>
           <input
             id="email"
-            className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
             type="email"
             name="email"
             placeholder="Enter your email*"
@@ -199,11 +220,13 @@ export default function SignUp() {
           />
         </div>
         {/* password */}
-        <div className="text-white">
-          <label htmlFor="password">Password</label>
+        <div className="text-black flex flex-col items-start w-fit">
+          <label htmlFor="password" className="p-2 text-lg">
+            Password:
+          </label>
           <input
             id="password"
-            className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
             type="password"
             name="password"
             placeholder="Create Password*"
@@ -212,11 +235,16 @@ export default function SignUp() {
           />
         </div>
         {/* confirm password */}
-        <div className="text-white">
-          <label htmlFor="confirmPassword">Confirm Password</label>
+        <div className="text-black flex flex-col items-start w-fit">
+          <label
+            htmlFor="confirmPassword"
+            className="p-2 text-lg"
+          >
+            Confirm Password:
+          </label>
           <input
             id="confirmPassword"
-            className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
             type="password"
             name="confirmPassword"
             placeholder="Confirm password*"
@@ -225,11 +253,13 @@ export default function SignUp() {
           />
         </div>
         {/* mobile */}
-        <div className="text-white">
-          <label htmlFor="mobile">Mobile</label>
+        <div className="text-black flex flex-col items-start w-fit">
+          <label htmlFor="mobile" className="p-2 text-lg ">
+            Mobile:
+          </label>
           <input
             id="mobile"
-            className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
             type="text"
             name="mobile"
             placeholder="Enter your Phone no."
@@ -240,11 +270,13 @@ export default function SignUp() {
 
         {/* otp field */}
         {optSent && (
-          <div className="text-white">
-            <label htmlFor="otp">OTP</label>
+          <div className="text-black flex flex-col items-start w-fit">
+            <label htmlFor="otp" className="p-2 text-lg ">
+              OTP:
+            </label>
             <input
               id="otp"
-              className="px-2 py-1.5 rounded-md outline-none border border-black bg-transparent text-white"
+              className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
               type="text"
               name="otp"
               placeholder="Enter otp send to your mail"
@@ -257,24 +289,24 @@ export default function SignUp() {
         <div className="flex justify-between gap-3">
           <button
             onClick={handleOTP}
-            className="px-2 py-1.5 rounded-md outline-none border text-white border-black bg-red-600 hover:bg-purple-800 hover:border-purple-800 transition-all duration-200"
+            className="px-2 py-1.5 rounded-full outline-none border w-32  md:w-40  text-white border-black bg-red-600 hover:bg-green-600 transition-all duration-200"
           >
             {optText}
           </button>
           {optSent && (
             <button
               onClick={handleSubmit}
-              className="px-2 py-1.5 rounded-md outline-none border text-white border-black hover:bg-purple-800 hover:border-purple-800 transition-all duration-200"
+              className="px-2 py-1.5 rounded-full outline-none border w-32  md:w-40  text-white border-black bg-red-600 hover:bg-green-600 transition-all duration-200"
             >
               {buttonText}
             </button>
           )}
         </div>
         {/* already have an account option */}
-        <div className="text-[15px] text-center">
+        <div className="text-lg text-center">
           Already have an account?{" "}
           <Link to="/login" className="font-semibold cursor-pointer">
-            <p>Login</p>
+            <p className=" text-large">Login</p>
           </Link>
         </div>
       </form>
