@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addEvents } from "./store/eventSlice";
-import SignUp from "./pages/signup/SignUp";
+import SignUp from "./pages/SignUp";
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
