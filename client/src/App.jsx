@@ -3,10 +3,6 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import CreateEvent from "./pages/CreateEvent";
 import HomePage from "./pages/HomePage";
-<<<<<<< HEAD
-import SignUp from "./pages/SignUpPage/SignUp";
-=======
->>>>>>> a787c18bcacbe745745b6987f4eecc5e3ba09a4c
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addEvents } from "./store/eventSlice";
