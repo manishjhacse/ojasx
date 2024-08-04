@@ -16,7 +16,7 @@ const Events = () => {
       className={`bg-gradient-to-r from-slate-900 to-slate-700 relative py-5 px-5  flex justify-center `}
     >
       <div className=" w-[900px] flex mb-9 flex-wrap gap-4  justify-center">
-        {eventsToShow.slice(0,5)?.map((event) => (
+        {eventsToShow.slice(0, 5)?.map((event) => (
           <Cards key={event._id} event={event} />
         ))}
       </div>
