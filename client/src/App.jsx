@@ -31,10 +31,7 @@ export default function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/changepassword" element={<ChangePassword />} />
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
     </div>
