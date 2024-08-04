@@ -7,6 +7,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addEvents } from "./store/eventSlice";
 import SignUp from "./pages/SignUp";
+import LoginPage from "./pages/LoginPage";
+import ChangePassword from "./pages/ChangePassword";
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,6 +25,8 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/createevent" element={<CreateEvent />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/changepassword" element={<ChangePassword/>} />
 
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
