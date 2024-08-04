@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-
+import { IoIosContact } from "react-icons/io";
+import logo from "../About/logo.png"
+import { useSelector } from 'react-redux';
+import { RxCross2 } from "react-icons/rx";
+import { FaBars } from "react-icons/fa";
 const Navbar = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
-    const userLoggedIn = false; // Change this value based on user's login status
+    const loggedIn = useSelector(state => state.loggedIn)
 
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
@@ -16,18 +20,16 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar">
+            <nav className="navbar text-3xl">
                 <div className="hamburger" onClick={toggleMenu}>
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
+                    {!isMenuOpen ? <FaBars /> : <RxCross2 />}
                 </div>
                 <div className="logo">
-                    <img src="Transparent Logo.png" alt="Logo" />
+                    <img src={logo} alt="Logo" />
                 </div>
-                <div className="contact-link">
-                    <Link to="/contact">
-                        <img src="contact.png" alt="Contact Us" />
+                <div className="contact-link text-4xl">
+                    <Link to="/">
+                    <div className='flex justify-center items-center'><IoIosContact /></div>
                     </Link>
                 </div>
             </nav>

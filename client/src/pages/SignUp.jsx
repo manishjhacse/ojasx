@@ -130,7 +130,7 @@ export default function SignUp() {
       toast.error(err.response.data.message);
     }
   }
-// Css from here---->>>>
+  // Css from here---->>>>
   return (
     <div className="h-screen w-screen flex justify-center items-center bg-gray-600 ">
       <form
