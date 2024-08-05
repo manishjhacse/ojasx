@@ -43,7 +43,7 @@ function Hero() {
       </div>
       <div className="text-center">
         <h1
-          className="text-[6rem] md:text-[13rem] lg:text-[25rem] leading-3 py-14  md:py-40 lg:py-52 font-bold bg-gradient-to-r from-blue-400   to-orange-600 bg-clip-text text-transparent "
+          className="text-[6rem] font-sans md:text-[13rem] lg:text-[25rem] leading-3 py-14  md:py-40 lg:py-52 font-bold bg-gradient-to-r from-blue-400   to-orange-600 bg-clip-text text-transparent "
           id="ojax"
         >
           OJAS'X
