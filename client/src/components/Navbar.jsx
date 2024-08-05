@@ -9,8 +9,8 @@ import { changeLoggedIn } from "../store/loginSlice";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 function Navbar() {
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const loggedIn = useSelector(state => state.loggedIn);
   const cart = useSelector(state => state.cart);
   const handleLogout = async () => {
@@ -71,8 +71,8 @@ function Navbar() {
             {!loggedIn && <li>
               <Link to="/login">Login</Link>
             </li>}
-            {!loggedIn && <li to="/signup">
-              <Link>Sign Up</Link>
+            {!loggedIn && <li >
+              <Link to="/signup">Sign Up</Link>
             </li>}
           </ul>
         </div>
