@@ -17,6 +17,7 @@ const FAQ = () => {
             question: `Are the registration charges for OJAS'X refundable if I decide not to participate or can not attend?`,
             answer: `No, the registration charges for OJAS'X are non-refundable. Once you have registered for the event, the fees cannot be refunded, regardless of your participation status. Please ensure your availability and commitment before registering.`,
         },
+        
     ];
 
     return (
@@ -26,15 +27,15 @@ const FAQ = () => {
             </h2>
             {faqs.map((faq, index) => (
                 <div key={index} className="mb-4">
-                    <button
+                    <div
                         onClick={() => toggleAnswer(index)}
-                        className="w-full text-left bg-black shadow-md shadow-white p-4 rounded-md"
+                        className="w-full cursor-pointer text-left bg-black shadow-md shadow-white p-4 f rounded-md"
                     >
                         <span className="md:text-lg text-[14px] font-medium">{faq.question}</span>
                         <span className="float-right text-xl md:text-2xl">
                             {activeIndex === index ? <FaChevronCircleUp /> : <FaChevronCircleDown />}
                         </span>
-                    </button>
+                    </div>
                     <div
                         className={`overflow-hidden transition-all duration-700 ${activeIndex === index ? ' md:max-h-[150px] max-h-[250px]' : 'max-h-0'
                             }`}
