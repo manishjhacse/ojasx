@@ -14,7 +14,7 @@ const eventSchema = new mongoose.Schema({
   event_date: { type: String },
   event_managers: {
     name: { type: String },
-    phone: { type: String },
+    mobile: { type: String },
   },
   category: { type: String },
   winner_prize: { type: String },

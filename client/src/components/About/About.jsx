@@ -48,21 +48,21 @@ const About = () => {
             <span className="text-[#9000FF]">EXPLORE AND DISCOVER</span>{" "}
             <span className="text-white">EXPLORE AND DISCOVER</span>{" "}
             <span className="text-[#9000FF]">EXPLORE AND DISCOVER</span>{" "}
-            <span className="text-white">EXPLORE AND DISCOVER</span>
+            <span className="text-white">EXPLORE AND DISCOVER</span>{" "}
             <span className="text-[#9000FF]">EXPLORE AND DISCOVER</span>{" "}
-            <span className="text-white">EXPLORE AND DISCOVER</span>
+            <span className="text-white">EXPLORE AND DISCOVER</span>{" "}
             <span className="text-[#9000FF]">EXPLORE AND DISCOVER</span>{" "}
             <span className="text-white">EXPLORE AND DISCOVER</span>
           </div>
           <div class="explore-text explore-text-2 aimate-text-2">
             <span className="text-[#9000FF]">OJAS'X TECH FEST</span>{" "}
-            <span className="text-white">OJAS'X TECH FEST</span>
+            <span className="text-white">OJAS'X TECH FEST</span>{" "}
             <span className="text-[#9000FF]">OJAS'X TECH FEST</span>{" "}
-            <span className="text-white">OJAS'X TECH FEST</span>
+            <span className="text-white">OJAS'X TECH FEST</span>{" "}
             <span className="text-[#9000FF]">OJAS'X TECH FEST</span>{" "}
-            <span className="text-white">OJAS'X TECH FEST</span>
+            <span className="text-white">OJAS'X TECH FEST</span>{" "}
             <span className="text-[#9000FF]">OJAS'X TECH FEST</span>{" "}
-            <span className="text-white">OJAS'X TECH FEST</span>
+            <span className="text-white">OJAS'X TECH FEST</span>{" "}
             <span className="text-[#9000FF]">OJAS'X TECH FEST</span>{" "}
             <span className="text-white">OJAS'X TECH FEST</span>
           </div>
