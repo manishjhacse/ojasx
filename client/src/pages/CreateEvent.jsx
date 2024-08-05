@@ -6,7 +6,7 @@ export default function CreateEvent() {
     event_name: "",
     about: "",
     registration_price: "",
-    event_managers: { name: "", mobile: "", email: "" },
+    event_managers: { name: "", mobile: "" },
     winner_prize: "",
     runnerup_prize: "",
     category: "",
@@ -73,7 +73,9 @@ export default function CreateEvent() {
       event_name: "",
       about: "",
       registration_price: "",
-      event_managers: { name: "", mobile: "", email: "" },
+      event_managers: {
+        name: "", mobile: ""
+      },
       winner_prize: "",
       runnerup_prize: "",
       category: "",
@@ -144,22 +146,6 @@ export default function CreateEvent() {
             name="event_managers.mobile"
             placeholder="Event Manager Name"
             value={formData.event_managers.mobile}
-            onChange={handleFormData}
-          />
-        </div>
-
-        {/* event manager email */}
-        <div className="flex flex-col">
-          <label htmlFor="eventmanageremail">
-            event manager email<span className="text-black">*</span>
-          </label>
-          <input
-            id="eventmanageremail"
-            className="px-2 py-1.5 md:w-[150px] w-[200px] rounded-md outline-none border border-white bg-transparent text-white"
-            type="text"
-            name="event_managers.email"
-            placeholder="Event Manager Name"
-            value={formData.event_managers.email}
             onChange={handleFormData}
           />
         </div>
