@@ -53,7 +53,8 @@ body {
     color: grey;
     display: inline-block;
 }
-.about-text p{
+
+.about-text p {
     font-size: 1.4rem;
 
 }
@@ -75,8 +76,8 @@ body {
 
 
 .about-text p {
-    margin-top: 10px; 
-    margin-bottom: 0; 
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .about-image {
@@ -85,16 +86,16 @@ body {
     justify-content: center;
     align-items: center;
 
-    
+
 }
 
 .about-image img {
 
-    width: 300px; 
-    height: auto; 
-    border-radius: 5%; 
-   
-   
+    width: 300px;
+    height: auto;
+    border-radius: 5%;
+
+
 }
 
 .explore {
@@ -116,7 +117,8 @@ body {
     font-weight: bold;
     color: rgb(212, 0, 255);
 }
-.techfest-black{
+
+.techfest-black {
     color: beige;
 }
 
@@ -132,31 +134,33 @@ body {
 .aimate-text {
     display: inline-block;
     white-space: nowrap;
-    animation:  marquee 10s linear forwards;
-  }
-  
-  @keyframes marquee {
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
     0% {
-      transform: translateX(0%);
+        transform: translateX(0);
     }
+
     100% {
-      transform: translateX(-50%);
+        transform: translateX(-100%);
     }
-  }
+}
 .aimate-text-2 {
     display: inline-block;
     white-space: nowrap;
-    animation:  marquee2 10s linear forwards;
-  }
-  
-  @keyframes marquee2 {
+    animation: marquee2 10s linear infinite;
+}
+
+@keyframes marquee2 {
     0% {
-      transform: translateX(-50%);
+        transform: translateX(-100%);
     }
+
     100% {
-      transform: translateX(0%);
+        transform: translateX(0);
     }
-  }
+}
 
 @media (max-width: 768px) {
     .heading {
@@ -176,14 +180,15 @@ body {
     .aimate-text-2 {
         display: inline-block;
         white-space: nowrap;
-        animation:  marquee2 5s linear forwards;
-      }
-      .aimate-text {
+        animation: marquee2 5s linear infinite;
+    }
+
+    .aimate-text {
         display: inline-block;
         white-space: nowrap;
-        animation:  marquee 5s linear forwards;
-      }
-      
+        animation: marquee 5s linear infinite;
+    }
+
     .heading {
         font-size: 1.5em;
     }
@@ -195,11 +200,13 @@ body {
     .explore-text {
         font-size: 1.2em;
     }
-    .content-responsive{
+
+    .content-responsive {
         font-size: 1em;
 
     }
-    .about-section .about-text .p-responsive{
+
+    .about-section .about-text .p-responsive {
         font-size: 1em;
 
     }
