@@ -50,7 +50,7 @@ export default function App({ event, fromCart }) {
           alt=""
           src={event.poster}
         />
-        <CardFooter className="justify-between bg-black bg-opacity-50 before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl  bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+        <CardFooter className="justify-between bg-black font-poppins  bg-opacity-50 before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl  bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
           <p className="text-small text-white font-semibold">{event.event_name}</p>
           {
             fromCart ? <Button

@@ -24,7 +24,7 @@ const Category = () => {
   };
 
   return (
-    <div className="w-full my-9 flex flex-col items-center">
+    <div className="w-full my-9 flex flex-col items-center font-poppins">
       <h1 className="font-bold text-5xl text-white mb-5">Categories</h1>
       <div className="relative w-fit mb-3 flex items-center justify-center">
         <Button
@@ -46,7 +46,7 @@ const Category = () => {
             />
           </div>
           <div className="-ml-5 -mr-9 z-20 relative">
-            <h1 className="absolute left-1 transform -translate-x-1/2 top-1/2 z-30 -rotate-90 text-white text-4xl font-bold">
+            <h1 className="absolute left-1 transform -translate-x-1/2 top-1/2 z-30 -rotate-90 text-white text-4xl font-medium">
               Gaming
             </h1>
             <img

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import NewPassword from "../components/NewPassword";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import {Button} from "@nextui-org/react";
+
 export default function ChangePassword() {
   const [showFull, setShowFull] = useState(false);
   const [optSent, setOptSent] = useState(false);
@@ -65,7 +67,7 @@ export default function ChangePassword() {
     }
   }
   return (
-    <div className=" px-3 text-black flex justify-center items-center min-h-screen overflow-hidden">
+    <div className=" px-3 text-black flex justify-center items-center font-poppins min-h-screen overflow-hidden">
       <div className="overflow-hidden bg-white  w-[300px]  px-10  backdrop rounded-2xl border-5 border-yellow-400">
         <form className="text-black flex flex-col py-12 justify-center items-center gap-4">
           <h1 className="text-xl font-bold mb-5">Reset Password</h1>
@@ -91,19 +93,19 @@ export default function ChangePassword() {
           </p>
           <div className="flex  justify-between gap-3">
             {optSent && (
-              <button
+              <Button color="primary" variant="shadow"
                 onClick={handleChangePassword}
-                className="px-2 py-1.5 text-xs outline-none border w-32 h-8 rounded-2xl text-white bg-green-800 border-black hover:bg-black transition-all duration-200"
+                className="px-2 py-1.5 text-xs outline-none border w-32 h-8 rounded-2xl text-white bg-green-800 border-black hover:bg-black transition-all duration-200 focus:outline-none"
               >
                 {buttonText}
-              </button>
+              </Button>
             )}
-            <button
+            <Button color="primary" variant="shadow"
               onClick={handleOTP}
-              className="px-2 py-1.5 text-xs outline-none border w-20 h-8 rounded-2xl text-white bg-red-600 border-black hover:bg-black transition-all duration-200"
+              className="px-2 py-1.5 text-xs outline-none border w-20 h-8 rounded-2xl text-white bg-red-600 border-black hover:bg-black transition-all duration-200 focus:outline-none"
             >
               {optText}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

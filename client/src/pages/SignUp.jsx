@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import {Button} from "@nextui-org/react";
+
+
 export default function SignUp() {
   const [optSent, setOptSent] = useState(false);
   const [buttonText, setButtonText] = useState("Sign Up");
@@ -132,7 +135,7 @@ export default function SignUp() {
   }
   // Css from here---->>>>
   return (
-    <div className="min-h-screen w-screen flex justify-center py-4 items-center ">
+    <div className="min-h-screen w-screen flex justify-center font-poppins py-4 items-center ">
       <form
         action=""
         className="text-black bg-white flex w-fit  h-fit   flex-col justify-center space-y-2 items-center border pt-1 pb-5 px-4 rounded-2xl"
@@ -289,19 +292,19 @@ export default function SignUp() {
         </div>
         {/* send otp and signup button */}
         <div className="flex justify-between gap-3">
-          <button
+          <Button color="primary" variant="shadow"
             onClick={handleOTP}
-            className="px-2 py-1.5 rounded-full outline-none border w-32  md:w-40  text-white border-black bg-red-600 hover:bg-green-600 transition-all duration-200"
+            className="px-2 py-1.5  rounded-full outline-none w-32  md:w-40  text-white  transition-all duration-200 focus:outline-none"
           >
             {optText}
-          </button>
+          </Button>
           {optSent && (
-            <button
+            <Button
               onClick={handleSubmit}
-              className="px-2 py-1.5 rounded-full outline-none border w-32  md:w-40  text-white border-black bg-red-600 hover:bg-green-600 transition-all duration-200"
+              className="px-2 py-1.5 rounded-full outline-none border w-32  md:w-40  text-white border-black bg-red-600 hover:bg-green-600 transition-all duration-200 focus:outline-none"
             >
               {buttonText}
-            </button>
+            </Button>
           )}
         </div>
         {/* already have an account option */}

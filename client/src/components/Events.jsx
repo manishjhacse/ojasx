@@ -12,7 +12,7 @@ const Events = () => {
     setEventsToShow(events);
   }, [events]);
   return (
-    <div className={`bg-black relative py-5 px-5  flex justify-center `}>
+    <div className={`bg-black  font-poppins relative py-5 px-5 mb-20  flex justify-center `}>
       <h1 className=" absolute top-2 z-10 font-bold text-5xl  text-white ">Events</h1>
       <div className=" w-[900px] flex mb-9 mt-16 flex-wrap gap-4  justify-center">
         {eventsToShow.length>0?
@@ -32,9 +32,9 @@ const Events = () => {
         })}
       </div>
 
-      <Button
+      <Button color="primary" variant="shadow"
         radius="full"
-        className="w-fit bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg absolute bottom-0 z-20 font-semibold"
+        className="w-fit absolute bottom-0 z-20 font-semibold focus:outline-none"
       >
         More Events
       </Button>
