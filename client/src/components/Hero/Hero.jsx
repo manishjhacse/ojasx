@@ -34,35 +34,35 @@ function Hero() {
   }, []);
 
   return (
-    <section className="text-white bg-black h-screen mb-12">
+    <section className="text-white bg-black h-screen mb-20">
       <div className=" text-center">
-        <div className="font-bold uppercase text-xl md:text-2xl lg:text-3xl italic ">
+        <div className="font-bold font-poppins uppercase text-xl md:text-2xl lg:text-3xl itali ">
           B.P. Mandal College of Engineering
         </div>
-        <div className="italic opacity-85">PRESENTS</div>
+        <div className="italic font-poppins  opacity-85">PRESENTS</div>
       </div>
       <div className="text-center">
         <h1
-          className="text-[6rem] font-sans md:text-[13rem] lg:text-[25rem] leading-3 py-14  md:py-40 lg:py-52 font-bold bg-gradient-to-r from-blue-400   to-orange-600 bg-clip-text text-transparent "
+          className="text-[6rem] md:text-[13rem] lg:text-[25rem] leading-3 py-14  md:py-40 lg:py-52 font-bold bg-gradient-to-r from-blue-400 font-poppins  to-orange-600 bg-clip-text text-transparent "
           id="ojax"
         >
           OJAS'X
         </h1>
-        <h1 className="text-[4rem] md:text-[5rem] leading-5 py-10 font-bold bg-gradient-to-r from-blue-400   to-orange-600 italic bg-clip-text text-transparent">
+        <h1 className="text-[4rem] md:text-[5rem] leading-5 py-10 font-bold bg-gradient-to-r from-blue-400   to-orange-600  bg-clip-text text-transparent font-poppins">
           2024
         </h1>
       </div>
       <div className=" my-10 flex justify-center items-center">
-        <div className="border border-neutral-600">
-          <div className="md:flex flex-wrap">
+        <div className="border border-neutral-600 rounded-xl">
+          <div className="md:flex flex-wrap font-poppins font-semibold">
             <div className="border-b pb-4 md:border-b-0 md:border-r border-neutral-600">
-              <div className="px-3 md:px-6 lg:px-10 pt-5">
+              <div className="px-3 md:px-6 lg:px-10 pt-5 ">
                 <div className="flex  ">
                   <div className="text-center">
                     <div className="text-2xl md:text-4xl lg:text-6xl">
                       {time.days}
                     </div>
-                    <div className="text-center pt-2 text-sm">DAY</div>
+                    <div className="text-center pt-2 text-sm ">DAY</div>
                   </div>
                   <span className="text-3xl md:text-4xl lg:text-6xl  px-1">
                     :
@@ -96,7 +96,7 @@ function Hero() {
             </div>
             <div className="flex justify-center items-center">
               <div className="p-3 md:p-5">
-                <div className="text-xl md:text-3xl lg:text-4xl">
+                <div className="text-xl md:text-3xl lg:text-4xl font-bold">
                   2024 September
                 </div>
                 <div className="flex justify-center pt-2 gap-4">

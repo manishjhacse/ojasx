@@ -10,20 +10,27 @@ export default {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+    },
   },
-  plugins: [nextui({
+  plugins: [
+    nextui({
       themes: {
         light: {
           colors: {
             primary: "#0072f5",
-          }
+          },
         },
         dark: {
           colors: {
             primary: "#0072f5",
-          }
+          },
         },
       },
-    }), require('daisyui'),],
+    }),
+    require("daisyui"),
+  ],
 };

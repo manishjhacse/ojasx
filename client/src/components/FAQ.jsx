@@ -21,8 +21,8 @@ const FAQ = () => {
     ];
 
     return (
-        <div className="max-w-4xl mx-auto p-4">
-            <h2 className="md:text-4xl text-3xl font-serif font-bold mb-4">
+        <div className="max-w-4xl font-poppins mx-auto p-4">
+            <h2 className="md:text-4xl text-3xl font-poppins font-semibold mb-4">
                 FAQ<span className='text-2xl'>S</span>
             </h2>
             {faqs.map((faq, index) => (
