@@ -9,7 +9,7 @@ import { addEvents } from "./store/eventSlice";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import ChangePassword from "./pages/ChangePassword";
-import Navbar from './components/Navbar/Navbar.jsx';
+import Navbar from './components/Navbar.jsx';
 import { FaPencilAlt } from "react-icons/fa";
 export default function App() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function App() {
   }, []);
   return (
     <div className="prevent-select overflow-hidden px-2">
-      <p className="py-[43px]"></p>
+      <p className="py-[33px]"></p>
       <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage />} />
