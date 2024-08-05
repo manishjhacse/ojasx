@@ -25,7 +25,9 @@ const Category = () => {
 
   return (
     <div className="w-full my-9 flex flex-col items-center font-poppins">
-      <h1 className="font-bold text-3xl sm:text-5xl text-white mb-5">Categories</h1>
+      <h1 className="font-bold text-3xl sm:text-5xl text-white mb-5">
+        Categories
+      </h1>
       <div className="relative w-fit mb-3 flex items-center justify-center">
         <Button
           onClick={prevSlide}
@@ -38,7 +40,7 @@ const Category = () => {
             <img
               src={
                 images[
-                currentIndex === 0 ? images.length - 1 : currentIndex - 1
+                  currentIndex === 0 ? images.length - 1 : currentIndex - 1
                 ]
               }
               alt="prev"
@@ -59,7 +61,7 @@ const Category = () => {
             <img
               src={
                 images[
-                currentIndex === images.length - 1 ? 0 : currentIndex + 1
+                  currentIndex === images.length - 1 ? 0 : currentIndex + 1
                 ]
               }
               alt="next"
@@ -71,7 +73,7 @@ const Category = () => {
           onClick={nextSlide}
           className="absolute right-0 p-2 bg-gray-700 bg-opacity-50 z-20 w-fit text-white rounded-full focus:outline-none"
         >
-          <IoIosArrowForward className="text-lg"  />
+          <IoIosArrowForward className="text-lg" />
         </Button>
       </div>
     </div>

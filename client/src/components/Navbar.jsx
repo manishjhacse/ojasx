@@ -9,10 +9,10 @@ import { changeLoggedIn } from "../store/loginSlice";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 function Navbar() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const loggedIn = useSelector(state => state.loggedIn);
-  const cart = useSelector(state => state.cart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const loggedIn = useSelector((state) => state.loggedIn);
+  const cart = useSelector((state) => state.cart);
   const handleLogout = async () => {
     try {
       const url = import.meta.env.VITE_BASE_URL;
@@ -25,14 +25,14 @@ function Navbar() {
         localStorage.removeItem("loggedInUser");
         dispatch(changeLoggedInUser({}));
         dispatch(changeLoggedIn(false));
-        toast.success("Logged Out")
+        toast.success("Logged Out");
         navigate("/");
       } else {
         console.log("Logout failed with status:", res.status);
       }
     } catch (err) {
       console.error("Logout error:", err);
-      toast.error("Try Again")
+      toast.error("Try Again");
       // navigate("/");
     }
   };
@@ -68,18 +68,25 @@ function Navbar() {
             <li>
               <Link to="/">Homepage</Link>
             </li>
-            {!loggedIn && <li>
-              <Link to="/login">Login</Link>
-            </li>}
-            {!loggedIn && <li >
-              <Link to="/signup">Sign Up</Link>
-            </li>}
+            {!loggedIn && (
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            )}
+            {!loggedIn && (
+              <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
       {/* logo */}
       <div className="flex-1">
-        <Link to="/" className=" btn shadow-none border-none bg-transparent text-xl ">
+        <Link
+          to="/"
+          className=" btn shadow-none border-none bg-transparent text-xl "
+        >
           {" "}
           <img className=" h-[52px]" src={logo} alt="dsd" />
         </Link>
@@ -117,16 +124,16 @@ function Navbar() {
             className="menu menu-sm dropdown-content  bg-neutral-800 text-white  rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link className="justify-between ">
-                Profile
-              </Link>
+              <Link className="justify-between ">Profile</Link>
             </li>
             <li>
               <Link>My Events</Link>
             </li>
-            {loggedIn && <li onClick={handleLogout}>
-              <Link>Logout</Link>
-            </li>}
+            {loggedIn && (
+              <li onClick={handleLogout}>
+                <Link>Logout</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

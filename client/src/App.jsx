@@ -9,27 +9,27 @@ import { addEvents } from "./store/eventSlice";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import ChangePassword from "./pages/ChangePassword";
-import Navbar from './components/Navbar.jsx';
+import Navbar from "./components/Navbar.jsx";
 import { FaPencilAlt } from "react-icons/fa";
 import CartPage from "./pages/CartPage";
 import { changeLoggedIn } from "./store/loginSlice";
 export default function App() {
   const dispatch = useDispatch();
   const isLoggedIn = () => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     if (token !== null) {
-      dispatch(changeLoggedIn(true))
+      dispatch(changeLoggedIn(true));
     } else {
-      dispatch(changeLoggedIn(false))
+      dispatch(changeLoggedIn(false));
     }
-  }
+  };
   const getAllEvents = async () => {
     const url = import.meta.env.VITE_BASE_URL;
     const response = await axios.get(`${url}/allevents`);
     dispatch(addEvents(response.data.events));
   };
   useEffect(() => {
-    isLoggedIn()
+    isLoggedIn();
     getAllEvents();
   }, []);
   return (
@@ -43,7 +43,6 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/mycart" element={<CartPage />} />
-
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
     </div>
