@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { User } = require("./userModel");
 const eventSchema = new mongoose.Schema({
-  event_name:{type:String},
+  event_name: { type: String },
   users: [
     {
       userID: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
@@ -11,10 +11,9 @@ const eventSchema = new mongoose.Schema({
   poster: { type: String },
   about: { type: String },
   registration_price: { type: Number, required: true },
-  event_date: { type: String, },
+  event_date: { type: String },
   event_managers: {
     name: { type: String },
-    email: { type: String },
     phone: { type: String },
   },
   category: { type: String },

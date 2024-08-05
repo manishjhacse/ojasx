@@ -21,7 +21,7 @@ async function uploadFileToCloudinary(file, folder, quality) {
 exports.signup = async (req, res) => {
   try {
     const { name, email, password, mobile, otp, college } = req.body;
-    const file = req.files?.image;
+    // const file = req.files?.image;
     email.toLowerCase();
     const existingUser = await User.findOne({ email });
     if (existingUser.password) {
@@ -42,21 +42,21 @@ exports.signup = async (req, res) => {
         message: "OTP expired",
       });
     }
-    const supportedFiles = ["jpg", "jpeg", "png"];
-    let imageurl =
-      "https://res.cloudinary.com/dfrcswf0n/image/upload/v1722092104/RoomImages/vgwtyhexx9ysttmcrrxe.png";
-    if (file) {
-      const fileType = file.name.split(".").pop().toLowerCase();
-      if (!isFileTypeSupported(fileType, supportedFiles)) {
-        return res.status(400).json({
-          success: false,
-          message: "file format not supported",
-        });
-      }
-      const response = await uploadFileToCloudinary(file, "User-Profile");
-      console.log("ok");
-      imageurl = response?.secure_url;
-    }
+    // const supportedFiles = ["jpg", "jpeg", "png"];
+    // let imageurl =
+    //   "https://res.cloudinary.com/dfrcswf0n/image/upload/v1722092104/RoomImages/vgwtyhexx9ysttmcrrxe.png";
+    // if (file) {
+    //   const fileType = file.name.split(".").pop().toLowerCase();
+    //   if (!isFileTypeSupported(fileType, supportedFiles)) {
+    //     return res.status(400).json({
+    //       success: false,
+    //       message: "file format not supported",
+    //     });
+    //   }
+    //   const response = await uploadFileToCloudinary(file, "User-Profile");
+    //   console.log("ok");
+    //   imageurl = response?.secure_url;
+    // }
     let hashedPassword;
     try {
       hashedPassword = await bcrypt.hash(password, 10);
@@ -73,7 +73,7 @@ exports.signup = async (req, res) => {
         name,
         password: hashedPassword,
         mobile,
-        profile_pic: imageurl,
+        // profile_pic: imageurl,
         college,
       },
       { new: true }
@@ -269,5 +269,17 @@ exports.changePassword = async (req, res) => {
       message: "Password can't change, Try again",
       error: err,
     });
+  }
+};
+
+
+//logout
+exports.logOut = async (req, res) => {
+  try {
+    res.clearCookie("token");
+    return res.status(200).json({ message: "Logout successful" });
+  } catch (err) {
+    console.error("Logout error:", err);
+    return res.status(500).json({ error: "An unexpected error occurred" });
   }
 };

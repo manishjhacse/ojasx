@@ -17,9 +17,9 @@ const Events = () => {
       <div className=" w-[900px] flex mb-9 mt-16 flex-wrap gap-4  justify-center">
         {eventsToShow.length>0?
         eventsToShow.slice(0, 5)?.map((event) => (
-          <Cards key={event._id} event={event} />
+          <Cards key={event._id} event={event} fromCart={false} />
         )):[0,1,2,3,4].map((index)=>{
-          return  <div key={index} className="col-span-12 sm:col-span-4 h-[300px] w-[264px] bg-gray-200 rounded-lg animate-pulse">
+          return  <div key={index} className="col-span-12 sm:col-span-4 h-[300px] w-[260px] bg-gray-200 rounded-lg animate-pulse">
           <div className="h-3/4 bg-gray-300 rounded-t-lg"></div>
           <div className="flex justify-between items-center p-2 bg-gray-200 rounded-b-lg">
             <div className="flex flex-col">

@@ -11,26 +11,38 @@ import LoginPage from "./pages/LoginPage";
 import ChangePassword from "./pages/ChangePassword";
 import Navbar from './components/Navbar.jsx';
 import { FaPencilAlt } from "react-icons/fa";
+import CartPage from "./pages/CartPage";
+import { changeLoggedIn } from "./store/loginSlice";
 export default function App() {
   const dispatch = useDispatch();
+  const isLoggedIn = () => {
+    const token = localStorage.getItem("token")
+    if (token !== null) {
+      dispatch(changeLoggedIn(true))
+    } else {
+      dispatch(changeLoggedIn(false))
+    }
+  }
+  const getAllEvents = async () => {
+    const url = import.meta.env.VITE_BASE_URL;
+    const response = await axios.get(`${url}/allevents`);
+    dispatch(addEvents(response.data.events));
+  };
   useEffect(() => {
-    const getAllEvents = async () => {
-      const url = import.meta.env.VITE_BASE_URL;
-      const response = await axios.get(`${url}/allevents`);
-      dispatch(addEvents(response.data.events));
-    };
+    isLoggedIn()
     getAllEvents();
   }, []);
   return (
     <div className="prevent-select overflow-hidden px-2">
       <p className="py-[33px]"></p>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/createevent" element={<CreateEvent />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/changepassword" element={<ChangePassword />} />
+        <Route path="/mycart" element={<CartPage />} />
 
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
