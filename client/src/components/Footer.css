@@ -1,31 +1,37 @@
-.footer-section{
+.footer-section {
     background-color: rgba(0, 0, 0, 0.737);
 }
-.fa-brands{
+
+.fa-brands {
     color: white;
     font-size: 28px;
     font-weight: 600;
     padding: 18px;
 }
-.footer-section-description{
-    color:#5a7184 ;
+
+.footer-section-description {
+    color: #5a7184;
     font-size: 18px;
     font-weight: 500;
 }
-.footer-heading-title{
+
+.footer-heading-title {
     color: white;
     font-size: 22px;
     font-weight: 600;
 }
-.footer-title{
-    color:white ;
+
+.footer-title {
+    color: white;
     font-size: 14px;
     font-weight: 500;
 }
-.footer-paragraph{
+
+.footer-paragraph {
     color: #5a7184;
 }
-.footer-heading{
+
+.footer-heading {
     color: white;
     font-size: 24px;
 }
