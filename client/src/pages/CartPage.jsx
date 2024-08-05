@@ -5,6 +5,7 @@ import { PiCurrencyInrBold } from "react-icons/pi";
 import { Link } from 'react-router-dom';
 import { clearCart } from '../store/cartSlice';
 export default function CartPage() {
+    const loggedInUser = useSelector(state => state.loggedInUser);
     const [showAlert, setShowAlert] = useState(false);
     const cartEvents = useSelector(state => state.cart);
     const dispatch = useDispatch();
@@ -13,8 +14,16 @@ export default function CartPage() {
         let total = 0;
         cartEvents.forEach((event) => {
             total += event.registration_price;
-            setTotalAmount(total)
         });
+        let discount = 0;
+        if (loggedInUser.college === "B. P. MANDAL COLLEGE OF ENGINEERING, MADHEPURA") {
+            discount += 150;
+        }
+        for (let i = 1; i <= cartEvents.length; i++) {
+            discount += ((i - 1) % 6) * 10;
+        }
+        setTotalAmount(total-discount)
+
     }, [])
     function handleClearCart() {
         dispatch(clearCart());
@@ -33,7 +42,7 @@ export default function CartPage() {
 
     }
     return (
-        <div className='flex lg:flex-row flex-col w-screen gap-10 justify-between md:px-12 py-10 min-h-screen'>
+        <div className='flex lg:flex-row flex-col w-screen gap-10 justify-between items-start md:px-12 py-10 min-h-screen'>
             <div className='flex flex-wrap gap-3 items-center justify-center overflow-hidden'>
                 {
                     cartEvents.map((event) => {
@@ -41,7 +50,7 @@ export default function CartPage() {
                     })
                 }
             </div>
-            <div className='items-center flex justify-center '>
+            <div className='items-center flex justify-center w-full lg:w-fit '>
                 {cartEvents.length > 0 && (
                     <div className="flex items-center flex-col md:w-[300px] ">
                         <h1 className="flex items-center">
