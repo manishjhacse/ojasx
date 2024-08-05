@@ -12,7 +12,7 @@ const Events = () => {
     setEventsToShow(events);
   }, [events]);
   return (
-    <div className={`bg-black  font-poppins relative py-5 px-5 mb-20  flex justify-center `}>
+    <div className={`bg-black  font-poppins relative py-5 px-2 sm:px-5 mb-20  flex justify-center `}>
       <h1 className=" absolute top-2 z-10 font-bold text-5xl  text-white ">Events</h1>
       <div className=" w-[900px] flex mb-9 mt-16 flex-wrap gap-4  justify-center">
         {eventsToShow.length>0?

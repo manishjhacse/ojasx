@@ -25,13 +25,13 @@ const Category = () => {
 
   return (
     <div className="w-full my-9 flex flex-col items-center font-poppins">
-      <h1 className="font-bold text-5xl text-white mb-5">Categories</h1>
+      <h1 className="font-bold text-3xl sm:text-5xl text-white mb-5">Categories</h1>
       <div className="relative w-fit mb-3 flex items-center justify-center">
         <Button
           onClick={prevSlide}
-          className="absolute w-fit left-0 p-2 bg-gray-700 bg-opacity-50 z-20 text-white rounded-full"
+          className="absolute w-fit left-0  bg-gray-700 bg-opacity-50 z-30 text-white rounded-3xl focus:outline-none"
         >
-          <IoIosArrowBack />
+          <IoIosArrowBack className="text-lg" />
         </Button>
         <div className="flex items-center justify-center">
           <div className="relative">
@@ -42,17 +42,17 @@ const Category = () => {
                 ]
               }
               alt="prev"
-              className="w-72 h-80 opacity-70 transform transition-transform duration-700 scale-100 rounded-3xl"
+              className="w-72 h-64 sm:h-[350px] opacity-70 transform transition-transform duration-700  scale-100 rounded-3xl"
             />
           </div>
-          <div className="-ml-5 -mr-9 z-20 relative">
+          <div className="-ml-5 -mr-14 z-20 relative">
             <h1 className="absolute left-1 transform -translate-x-1/2 top-1/2 z-30 -rotate-90 text-white text-4xl font-medium">
               Gaming
             </h1>
             <img
               src={images[currentIndex]}
               alt="main"
-              className="w-96 h-96 transform transition-transform duration-700 scale-105 -ml-5 -mr-5 z-20 rounded-3xl"
+              className="  w-[580px] sm:w-96 h-72  sm:h-96 transform transition-transform duration-700 scale-105 -ml-5 -mr-5 z-20 rounded-3xl"
             />
           </div>
           <div className="relative">
@@ -63,15 +63,15 @@ const Category = () => {
                 ]
               }
               alt="next"
-              className="w-72 h-80 opacity-70 transform transition-transform duration-700 scale-100 rounded-3xl"
+              className="w-72 h-64 sm:h-[350px] opacity-70 transform transition-transform duration-700 scale-100 rounded-3xl"
             />
           </div>
         </div>
         <Button
           onClick={nextSlide}
-          className="absolute right-0 p-2 bg-gray-700 bg-opacity-50 z-20 w-fit text-white rounded-full"
+          className="absolute right-0 p-2 bg-gray-700 bg-opacity-50 z-20 w-fit text-white rounded-full focus:outline-none"
         >
-          <IoIosArrowForward />
+          <IoIosArrowForward className="text-lg"  />
         </Button>
       </div>
     </div>
