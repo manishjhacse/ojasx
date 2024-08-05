@@ -70,7 +70,7 @@ export default function SignUp() {
         withCredentials: true,
       });
       toast.success("Account created");
-      //   navigate("/login");
+      navigate("/login");
     } catch (err) {
       toast.error(err.response.data.message);
     }
@@ -135,156 +135,158 @@ export default function SignUp() {
     <div className="min-h-screen w-screen flex justify-center py-4 items-center ">
       <form
         action=""
-        className="text-black bg-white flex sm:w-80 md:w-96  h-fit   flex-col justify-center space-y-2 items-center border pt-1 pb-5 px-4 rounded-2xl"
+        className="text-black bg-white flex w-fit  h-fit   flex-col justify-center space-y-2 items-center border pt-1 pb-5 px-4 rounded-2xl"
       >
         <h1 className="text-lg font-bold ">Register</h1>
-        {/* name */}
-        <div className="text-black flex  flex-col items-start w-fit">
-          <label
-            htmlFor="name"
-            className="p-2  border-black text-lg"
-          >
-            Name:
-          </label>
-          <input
-            id="name"
-            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
-            type="name"
-            name="name"
-            placeholder="Enter your Name*"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        {/* registration no */}
-        <div className="text-black flex flex-col items-start w-fit">
-          <label
-            htmlFor="registraion_no"
-            className="p-2  text-lg"
-          >
-            Registration No:
-          </label>
-          <input
-            id="registraion_no"
-            className="px-2 py-1.5 outline-none w-48 md:w-60 border border-black bg-transparent text-black rounded-full"
-            type="text"
-            name="registraion_no"
-            placeholder="Enter Registraion No.*"
-            value={formData.registraion_no}
-            onChange={handleChange}
-          />
-        </div>
-        {/* college */}
-        <div className="text-black flex flex-col items-start w-fit">
-        <label
-            htmlFor="college"
-            className="p-2  text-lg"
-          >
-            College:
-          </label>
-          <select
-            id="college"
-            className="px-2 py-1.5 w-48 md:w-60 outline-none border border-black  rounded-2xl bg-transparent text-black"
-            name="college"
-            value={formData.college}
-            onChange={handleChange}
-          >
-            <option className="sm:w-[50px] bg-black md:w-[200px]" value="">
-              Select Your College
-            </option>
-            {collegeOptions.map((college) => {
-              return (
-                <option
-                  className="md:w-[150px] bg-white  w-[200px]"
-                  value={college}
-                >
-                  {college}
+        <div className="flex gap-2 sm:flex-row flex-col">
+          <div>{/* name */}
+            <div className="text-black flex  flex-col items-start w-fit">
+              <label
+                htmlFor="name"
+                className="p-2  border-black text-lg"
+              >
+                Name:
+              </label>
+              <input
+                id="name"
+                className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
+                type="name"
+                name="name"
+                placeholder="Enter your Name*"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
+            {/* registration no */}
+            <div className="text-black flex flex-col items-start w-fit">
+              <label
+                htmlFor="registraion_no"
+                className="p-2  text-lg"
+              >
+                Registration No:
+              </label>
+              <input
+                id="registraion_no"
+                className="px-2 py-1.5 outline-none w-48 md:w-60 border border-black bg-transparent text-black rounded-full"
+                type="text"
+                name="registraion_no"
+                placeholder="Enter Registraion No.*"
+                value={formData.registraion_no}
+                onChange={handleChange}
+              />
+            </div>
+            {/* college */}
+            <div className="text-black flex flex-col items-start w-fit">
+              <label
+                htmlFor="college"
+                className="p-2  text-lg"
+              >
+                College:
+              </label>
+              <select
+                id="college"
+                className="px-2 cursor-pointer py-1.5 w-48 md:w-60 outline-none border border-black  rounded-2xl bg-transparent text-black"
+                name="college"
+                value={formData.college}
+                onChange={handleChange}
+              >
+                <option className=" bg-white w-48 md:w-60 cursor-pointer " value="">
+                  Select Your College
                 </option>
-              );
-            })}
-          </select>
-        </div>
-        {/* email */}
-        <div className="text-black flex flex-col items-start w-fit">
-          <label htmlFor="email" className="p-2 text-lg">
-            Email:
-          </label>
-          <input
-            id="email"
-            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
-            type="email"
-            name="email"
-            placeholder="Enter your email*"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        {/* password */}
-        <div className="text-black flex flex-col items-start w-fit">
-          <label htmlFor="password" className="p-2 text-lg">
-            Password:
-          </label>
-          <input
-            id="password"
-            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
-            type="password"
-            name="password"
-            placeholder="Create Password*"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        {/* confirm password */}
-        <div className="text-black flex flex-col items-start w-fit">
-          <label
-            htmlFor="confirmPassword"
-            className="p-2 text-lg"
-          >
-            Confirm Password:
-          </label>
-          <input
-            id="confirmPassword"
-            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm password*"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-          />
-        </div>
-        {/* mobile */}
-        <div className="text-black flex flex-col items-start w-fit">
-          <label htmlFor="mobile" className="p-2 text-lg ">
-            Mobile:
-          </label>
-          <input
-            id="mobile"
-            className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
-            type="text"
-            name="mobile"
-            placeholder="Enter your Phone no."
-            value={formData.mobile}
-            onChange={handleChange}
-          />
-        </div>
+                {collegeOptions.map((college) => {
+                  return (
+                    <option
+                      className=" cursor-pointer bg-white w-48 md:w-60"
+                      value={college}
+                    >
+                      {college}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            {/* email */}
+            <div className="text-black flex flex-col items-start w-fit">
+              <label htmlFor="email" className="p-2 text-lg">
+                Email:
+              </label>
+              <input
+                id="email"
+                className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
+                type="email"
+                name="email"
+                placeholder="Enter your email*"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div></div>
+          <div>  {/* password */}
+            <div className="text-black flex flex-col items-start w-fit">
+              <label htmlFor="password" className="p-2 text-lg">
+                Password:
+              </label>
+              <input
+                id="password"
+                className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
+                type="password"
+                name="password"
+                placeholder="Create Password*"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </div>
+            {/* confirm password */}
+            <div className="text-black flex flex-col items-start w-fit">
+              <label
+                htmlFor="confirmPassword"
+                className="p-2 text-lg"
+              >
+                Confirm Password:
+              </label>
+              <input
+                id="confirmPassword"
+                className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm password*"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
+            </div>
+            {/* mobile */}
+            <div className="text-black flex flex-col items-start w-fit">
+              <label htmlFor="mobile" className="p-2 text-lg ">
+                Mobile:
+              </label>
+              <input
+                id="mobile"
+                className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
+                type="text"
+                name="mobile"
+                placeholder="Enter your Phone no."
+                value={formData.mobile}
+                onChange={handleChange}
+              />
+            </div>
 
-        {/* otp field */}
-        {optSent && (
-          <div className="text-black flex flex-col items-start w-fit">
-            <label htmlFor="otp" className="p-2 text-lg ">
-              OTP:
-            </label>
-            <input
-              id="otp"
-              className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
-              type="text"
-              name="otp"
-              placeholder="Enter otp send to your mail"
-              value={formData.otp}
-              onChange={handleChange}
-            />
-          </div>
-        )}
+            {/* otp field */}
+            {optSent && (
+              <div className="text-black flex flex-col items-start w-fit">
+                <label htmlFor="otp" className="p-2 text-lg ">
+                  OTP:
+                </label>
+                <input
+                  id="otp"
+                  className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
+                  type="text"
+                  name="otp"
+                  placeholder="Enter otp send to your mail"
+                  value={formData.otp}
+                  onChange={handleChange}
+                />
+              </div>
+            )}</div>
+        </div>
         {/* send otp and signup button */}
         <div className="flex justify-between gap-3">
           <button
