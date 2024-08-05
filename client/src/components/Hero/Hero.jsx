@@ -48,7 +48,7 @@ function Hero() {
         >
           OJAS'X
         </h1>
-        <h1 className="text-[4rem] md:text-[5rem] leading-5 py-10 font-bold bg-gradient-to-r from-blue-400   to-orange-600  bg-clip-text text-transparent font-poppins">
+        <h1 className="text-[4rem] md:text-[5rem] leading-5 py-10 font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-600  bg-clip-text text-transparent font-poppins">
           2024
         </h1>
       </div>
