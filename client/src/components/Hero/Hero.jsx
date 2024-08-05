@@ -43,11 +43,12 @@ function Hero() {
       </div>
       <div className="text-center">
         <h1
-          className="text-[6rem] md:text-[13rem] lg:text-[25rem] leading-3 py-14  md:py-40 lg:py-52 font-bold bg-gradient-to-r from-blue-400 font-poppins  to-orange-600 bg-clip-text text-transparent "
+          className="text-[6rem] md:text-[13rem] lg:text-[25rem] leading-3 py-14  md:py-40 lg:py-52 font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent font-poppins  "
           id="ojax"
         >
           OJAS'X
         </h1>
+
         <h1 className="text-[4rem] md:text-[5rem] leading-5 py-10 font-bold bg-gradient-to-r from-blue-400   to-orange-600  bg-clip-text text-transparent font-poppins">
           2024
         </h1>
