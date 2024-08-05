@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState  } from "react";
 import Cards from "./Cards";
 import { Button } from "@nextui-org/react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Events = () => {
+  const navigate = useNavigate()
   const events = useSelector((state) => state.events);
   const [eventsToShow, setEventsToShow] = useState([]);
   useEffect(() => {
@@ -37,6 +39,7 @@ const Events = () => {
       </div>
 
       <Button
+        onClick={() => navigate("/events")}
         color="primary"
         variant="shadow"
         radius="full"

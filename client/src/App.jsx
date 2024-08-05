@@ -10,6 +10,8 @@ import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import ChangePassword from "./pages/ChangePassword";
 import Navbar from "./components/Navbar.jsx";
+import EventsPage from "./pages/EventsPage.jsx";
+
 import { FaPencilAlt } from "react-icons/fa";
 import CartPage from "./pages/CartPage";
 import { changeLoggedIn } from "./store/loginSlice";
@@ -43,6 +45,8 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/mycart" element={<CartPage />} />
+        <Route path="/events" element={<EventsPage />} />
+
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
     </div>
