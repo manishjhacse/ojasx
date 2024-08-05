@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import {Button} from "@nextui-org/react";
-
+import { Button } from "@nextui-org/react";
 
 export default function SignUp() {
   const [optSent, setOptSent] = useState(false);
@@ -142,12 +141,10 @@ export default function SignUp() {
       >
         <h1 className="text-lg font-bold ">Register</h1>
         <div className="flex gap-2 sm:flex-row flex-col">
-          <div>{/* name */}
+          <div>
+            {/* name */}
             <div className="text-black flex  flex-col items-start w-fit">
-              <label
-                htmlFor="name"
-                className="p-2  border-black text-lg"
-              >
+              <label htmlFor="name" className="p-2  border-black text-lg">
                 Name:
               </label>
               <input
@@ -162,10 +159,7 @@ export default function SignUp() {
             </div>
             {/* registration no */}
             <div className="text-black flex flex-col items-start w-fit">
-              <label
-                htmlFor="registraion_no"
-                className="p-2  text-lg"
-              >
+              <label htmlFor="registraion_no" className="p-2  text-lg">
                 Registration No:
               </label>
               <input
@@ -180,10 +174,7 @@ export default function SignUp() {
             </div>
             {/* college */}
             <div className="text-black flex flex-col items-start w-fit">
-              <label
-                htmlFor="college"
-                className="p-2  text-lg"
-              >
+              <label htmlFor="college" className="p-2  text-lg">
                 College:
               </label>
               <select
@@ -193,7 +184,10 @@ export default function SignUp() {
                 value={formData.college}
                 onChange={handleChange}
               >
-                <option className=" bg-white w-48 md:w-60 cursor-pointer " value="">
+                <option
+                  className=" bg-white w-48 md:w-60 cursor-pointer "
+                  value=""
+                >
                   Select Your College
                 </option>
                 {collegeOptions.map((college) => {
@@ -222,8 +216,11 @@ export default function SignUp() {
                 value={formData.email}
                 onChange={handleChange}
               />
-            </div></div>
-          <div>  {/* password */}
+            </div>
+          </div>
+          <div>
+            {" "}
+            {/* password */}
             <div className="text-black flex flex-col items-start w-fit">
               <label htmlFor="password" className="p-2 text-lg">
                 Password:
@@ -240,10 +237,7 @@ export default function SignUp() {
             </div>
             {/* confirm password */}
             <div className="text-black flex flex-col items-start w-fit">
-              <label
-                htmlFor="confirmPassword"
-                className="p-2 text-lg"
-              >
+              <label htmlFor="confirmPassword" className="p-2 text-lg">
                 Confirm Password:
               </label>
               <input
@@ -271,7 +265,6 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-
             {/* otp field */}
             {optSent && (
               <div className="text-black flex flex-col items-start w-fit">
@@ -288,11 +281,14 @@ export default function SignUp() {
                   onChange={handleChange}
                 />
               </div>
-            )}</div>
+            )}
+          </div>
         </div>
         {/* send otp and signup button */}
         <div className="flex justify-between gap-3">
-          <Button color="primary" variant="shadow"
+          <Button
+            color="primary"
+            variant="shadow"
             onClick={handleOTP}
             className="px-2 py-1.5  rounded-full outline-none w-32  md:w-40  text-white  transition-all duration-200 focus:outline-none"
           >

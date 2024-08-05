@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import NewPassword from "../components/NewPassword";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import {Button} from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 export default function ChangePassword() {
   const [showFull, setShowFull] = useState(false);
@@ -93,14 +93,18 @@ export default function ChangePassword() {
           </p>
           <div className="flex  justify-between gap-3">
             {optSent && (
-              <Button color="primary" variant="shadow"
+              <Button
+                color="primary"
+                variant="shadow"
                 onClick={handleChangePassword}
                 className="px-2 py-1.5 text-xs outline-none border w-32 h-8 rounded-2xl text-white bg-green-800 border-black hover:bg-black transition-all duration-200 focus:outline-none"
               >
                 {buttonText}
               </Button>
             )}
-            <Button color="primary" variant="shadow"
+            <Button
+              color="primary"
+              variant="shadow"
               onClick={handleOTP}
               className="px-2 py-1.5 text-xs outline-none border w-20 h-8 rounded-2xl text-white bg-red-600 border-black hover:bg-black transition-all duration-200 focus:outline-none"
             >
