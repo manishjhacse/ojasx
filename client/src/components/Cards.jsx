@@ -51,8 +51,8 @@ export default function App({ event, fromCart }) {
           src={event.poster}
         />
         <CardFooter className="justify-between bg-black font-poppins  bg-opacity-50 before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl  bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-          <p  className="text-small text-white font-semibold">{event.event_name}</p>
-         <div className="z-40"> {
+          <p className="text-small text-white font-semibold">{event.event_name}</p>
+          <div className="z-40"> {
             fromCart ? <Button
               onClick={handleRemoveFromCart}
               className="text-tiny text-white hover:bg-opacity-80 bg-black opacity-65"

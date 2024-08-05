@@ -40,7 +40,7 @@ const Category = () => {
             <img
               src={
                 images[
-                  currentIndex === 0 ? images.length - 1 : currentIndex - 1
+                currentIndex === 0 ? images.length - 1 : currentIndex - 1
                 ]
               }
               alt="prev"
@@ -61,7 +61,7 @@ const Category = () => {
             <img
               src={
                 images[
-                  currentIndex === images.length - 1 ? 0 : currentIndex + 1
+                currentIndex === images.length - 1 ? 0 : currentIndex + 1
                 ]
               }
               alt="next"

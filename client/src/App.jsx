@@ -36,7 +36,7 @@ export default function App() {
   }, []);
   return (
     <div className="prevent-select overflow-hidden px-2">
-      <p className="py-[33px]"></p>
+      <p className="py-[10px]"></p>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

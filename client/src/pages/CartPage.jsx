@@ -22,7 +22,7 @@ export default function CartPage() {
         for (let i = 1; i <= cartEvents.length; i++) {
             discount += ((i - 1) % 6) * 10;
         }
-        setTotalAmount(total-discount)
+        setTotalAmount(total - discount)
 
     }, [])
     function handleClearCart() {
