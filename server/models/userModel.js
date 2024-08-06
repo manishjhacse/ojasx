@@ -11,14 +11,12 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   profile_pic: { type: String },
   college: { type: String },
-  registration_no:{type:String},
+  registration_no: { type: String },
   events: [
-    
-      {eventId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Event",
-      },}
-    
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Event",
+    },
   ],
 });
 

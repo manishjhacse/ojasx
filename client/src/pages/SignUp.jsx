@@ -7,6 +7,7 @@ import axios from "axios";
 import { Button } from "@nextui-org/react";
 
 export default function SignUp() {
+  const navigate=useNavigate()
   const [optSent, setOptSent] = useState(false);
   const [buttonText, setButtonText] = useState("Sign Up");
   const [optText, setOptText] = useState("Send OTP");
@@ -17,7 +18,7 @@ export default function SignUp() {
     confirmPassword: "",
     mobile: "",
     otp: "",
-    registraion_no: "",
+    registration_no: "",
     college: "",
   });
   const collegeOptions = [
@@ -73,7 +74,7 @@ export default function SignUp() {
       });
       toast.success("Account created");
       setButtonText("Sign Up");
-      navigate("/login");
+      
     } catch (err) {
       toast.error(err.response.data.message);
     }
@@ -87,13 +88,14 @@ export default function SignUp() {
       confirmPassword: "",
       mobile: "",
       otp: "",
-      registraion_no: "",
+      registration_no: "",
       college: "",
     };
     setFormData(blankFormData);
     setOptSent(false);
     setButtonText("Sign Up");
     setOptText("Send OTP");
+    navigate("/login")
   }
   async function handleSubmit(e) {
     e.preventDefault();
@@ -110,7 +112,7 @@ export default function SignUp() {
       formData.email == "" ||
       formData.confirmPassword == "" ||
       formData.mobile == "" ||
-      formData.registraion_no == "" ||
+      formData.registration_no == "" ||
       formData.college == ""
     ) {
       toast.error("please fill all the details");
@@ -167,9 +169,9 @@ export default function SignUp() {
                 id="registraion_no"
                 className="px-2 py-1.5 outline-none w-48 md:w-60 border border-black bg-transparent text-black rounded-full"
                 type="text"
-                name="registraion_no"
+                name="registration_no"
                 placeholder="Enter Registraion No.*"
-                value={formData.registraion_no}
+                value={formData.registration_no}
                 onChange={handleChange}
               />
             </div>
