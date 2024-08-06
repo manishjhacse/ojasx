@@ -37,7 +37,7 @@ function Navbar() {
     }
   };
   return (
-    <div className="navbar bg-black fixed flex -space-x-10 left-0 right-0 top-0 z-50 mb-1 border-b border-neutral-800 ">
+    <div className="navbar bg-black fixed flex -space-x-10 left-0 right-0 top-0 z-50 mb-1 border-b border-neutral-800 font-poppins ">
       {/* Hamburger */}
       <div className="navbar-start">
         <div className="dropdown">

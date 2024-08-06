@@ -38,12 +38,12 @@ const Events = () => {
           })}
       </div>
 
-      <Button
+      <Button 
         onClick={() => navigate("/events")}
         color="primary"
         variant="shadow"
         radius="full"
-        className="w-fit absolute bottom-0 z-20 font-semibold focus:outline-none"
+        className="w-fit absolute bottom-0 z-20 font-semibold focus:outline-none shadow-xl"
       >
         More Events
       </Button>

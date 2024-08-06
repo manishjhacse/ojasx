@@ -19,3 +19,18 @@
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 }
+
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    #9333ea,
+    #db2777,
+    /* #eab308, */
+    /* #db2777, */
+    #9333ea,
+    #db2777
+    /* #eab308 */
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+}

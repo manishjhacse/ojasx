@@ -42,7 +42,7 @@ export default function CartPage() {
 
     }
     return (
-        <div className='flex lg:flex-row flex-col w-screen gap-10 justify-between items-start md:px-12 py-10 min-h-screen'>
+        <div className='flex lg:flex-row flex-col w-screen gap-10 font-poppins justify-between items-start md:px-12 py-10 min-h-screen'>
             <div className='flex flex-wrap gap-3 items-center justify-center overflow-hidden'>
                 {
                     cartEvents.map((event) => {

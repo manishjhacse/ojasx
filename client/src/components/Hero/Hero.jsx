@@ -23,11 +23,11 @@ function Hero() {
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      setTime({ 
-        days: days.toString().padStart(2, '0'),
-        hours: hours.toString().padStart(2, '0'),
-        minutes: minutes.toString().padStart(2, '0'),
-        seconds: seconds.toString().padStart(2, '0'),
+      setTime({
+        days: days.toString().padStart(2, "0"),
+        hours: hours.toString().padStart(2, "0"),
+        minutes: minutes.toString().padStart(2, "0"),
+        seconds: seconds.toString().padStart(2, "0"),
       });
 
       if (difference < 0) {
@@ -41,28 +41,32 @@ function Hero() {
   return (
     <section className="text-white bg-black md:min-h-screen my-5">
       <div className=" text-center">
-        <div className="font-bold font-poppins uppercase text-xl md:text-2xl lg:text-3xl itali ">
+        <div className="font-bold font-poppins uppercase text-xl md:text-2xl lg:text-3xl">
           B.P. Mandal College of Engineering
         </div>
-        <div className="italic font-poppins  opacity-85 text-sm md:text-md ">PRESENTS</div>
+        <div className="italic font-poppins  opacity-85 text-sm md:text-md ">
+          PRESENTS
+        </div>
       </div>
       <div className="text-center">
         <h1
-          className="text-[6rem] md:text-[13rem] lg:text-[25rem] leading-3 py-14  md:py-40 lg:py-44 font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent font-poppins  "
+          className="gradient-text text-[6rem] md:text-[13rem] lg:text-[25rem] leading-3 py-14  md:py-40 lg:py-44 font-bold text-transparent font-poppins animate-gradient "
           id="ojax"
         >
           OJAS'X
         </h1>
-        <h1 className="text-[4rem] md:text-[5rem] leading-5 py-10 font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-600  bg-clip-text text-transparent font-poppins">
+        <h1 className="gradient-text text-[4rem] md:text-[5rem] leading-5 py-10 font-bold  text-transparent font-poppins animate-gradient">
           2024
         </h1>
       </div>
       <div className="my-10 flex justify-center items-center">
-        <div className="border border-neutral-800 rounded-md rounded-xl">
+        <div className="border border-neutral-800 rounded-xl shadow-md shadow-purple-600 ">
           <div className="md:flex flex-wrap font-poppins font-semibold">
             <div className="border-b pb-4 md:border-b-0 md:border-r border-neutral-600">
-              <div className="px-3 md:px-6 lg:px-10 pt-4
-              ">
+              <div
+                className="px-3 md:px-6 lg:px-10 pt-4
+              "
+              >
                 <div className="flex  ">
                   <div className="text-center">
                     <div className="text-2xl md:text-4xl lg:text-6xl">

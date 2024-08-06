@@ -1,11 +1,11 @@
-import React from 'react'
-import Events from '../components/Events'
-import Hero from '../components/Hero/Hero'
-import Category from '../components/Category'
-import About from '../components/About/About'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import FAQ from '../components/FAQ'
+import React from "react";
+import Events from "../components/Events";
+import Hero from "../components/Hero/Hero";
+import Category from "../components/Category";
+import About from "../components/About/About";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import FAQ from "../components/FAQ";
 export default function HomePage() {
   return (
     <div>
@@ -18,5 +18,5 @@ export default function HomePage() {
       <FAQ />
       <Footer />
     </div>
-  )
+  );
 }
