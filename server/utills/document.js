@@ -1,5 +1,6 @@
-module.exports = ({name, price1, price2,recipt, email }) => {
+module.exports = ({name, email, reg, events }) => {
     const today = new Date()
+    
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -95,7 +96,7 @@ module.exports = ({name, price1, price2,recipt, email }) => {
                         <table>
                             <tr>
                                 <td class="title">
-                                    <img src="https://ojasx.vercel.app/assets/logo-GnJEF2C2.png" style="width: 100%; max-width: 156px;" alt="">
+                                    <img src=${__dirname+'../images/logo.png'} style="width: 100%; max-width: 100px;" alt="">
                                 </td>
                                 <td>
                                 Date of Invoice: ${`${today.getDate()}.${today.getMonth()+1}.${today.getFullYear()}`}
@@ -114,28 +115,28 @@ module.exports = ({name, price1, price2,recipt, email }) => {
                                     Customer name: ${name}
                                 </td>
                                 <td>
-                                    Receipt number : ${recipt}
+                                    Receipt number : OJAX${reg}
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr class="heading">
-                        <td>Invoice</td>
+                        <td>Event Name</td>
                         <td>Price</td>
                 </tr>
-                <tr class="item">
-                    <td>First item:</td>
-                    <td>${price1}</td>
-                </tr>
-                <tr class="item">
-                    <td>Second item:</td>
-                    <td>${price2}</td>
-                </tr>
+                ${events.map((event) => {
+                    return ` <tr>
+                        <td>${event.event_name}</td>
+                        <td>${event.reg_price}</td>
+                      </tr>
+                    `;
+                  }).join('')
+                }
             
             </table>
             <br>
-            <h3 class="justify-center">Total Price: ${parseInt(price1) + parseInt(price2)}</h3>
+            <h3 class="justify-center">Total Price: ${events.reduce((total, event) => total + event.reg_price, 0)}</h3>
             <footer>
                 <p class="justify-center">Invoice was created on ${`${today.getDate()}.${today.getMonth()+1}.${today.getFullYear()}.`}</p>
             </footer>
