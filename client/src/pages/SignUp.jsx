@@ -72,6 +72,7 @@ export default function SignUp() {
         withCredentials: true,
       });
       toast.success("Account created");
+      setButtonText("Sign Up");
       navigate("/login");
     } catch (err) {
       toast.error(err.response.data.message);

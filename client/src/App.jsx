@@ -11,7 +11,6 @@ import LoginPage from "./pages/LoginPage";
 import ChangePassword from "./pages/ChangePassword";
 import Navbar from "./components/Navbar.jsx";
 import EventsPage from "./pages/EventsPage.jsx";
-
 import { FaPencilAlt } from "react-icons/fa";
 import CartPage from "./pages/CartPage";
 import { changeLoggedIn } from "./store/loginSlice";
@@ -36,7 +35,7 @@ export default function App() {
   }, []);
   return (
     <div className="prevent-select overflow-hidden px-2">
-      <p className="py-[10px]"></p>
+      <p className="py-[33px]"></p>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
