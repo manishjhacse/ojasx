@@ -6,15 +6,19 @@ const env = require('dotenv')
 env.config()
 
 const pdfTemplate = require("../utills/document.js")
-exports.createPdf = (req, res) => {
+exports.createPdf = async(req, res) => {
     pdf.create(pdfTemplate(req.body), {timeout: 300000 }).toFile('pdfs/invoice.pdf', (err) => {
     if (err) {
         console.log(err);
         res.status(500).send('Error generating PDF');
     } else {
-        res.send('PDF generated');
+        res.send('pdf generated successfuly')
     }
     });
+
+    // const browser = await pupp
+
+    
 };
 
 
@@ -49,7 +53,6 @@ exports.sendPdf = (req, res) => {
                 content:attachment,
                 filename: 'invoice.pdf',
                 contentType: 'application/pdf' ,
-                contentDisposition:'attachment',
                 encoding: 'base64'
             }
         ]
