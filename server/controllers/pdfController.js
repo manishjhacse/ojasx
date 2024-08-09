@@ -1,5 +1,5 @@
 const fs = require("fs");
-const pdf = require("html-pdf");
+const puppeteer = require('puppeteer');
 const path = require("path");
 const nodemailer = require("nodemailer");
 const env = require("dotenv");
@@ -14,56 +14,61 @@ env.config();
 exports.createPdf = async (req, res) => {
   const userId = req.body.userId;
 
-  pdf
-    .create(pdfTemplate(req.body), { timeout: 300000 })
-    .toBuffer(async (err, buffer) => {
-      if (err) {
-        console.log(err);
-        return res.status(500).send("Error generating PDF");
-      } else {
-        try {
-          // Create a readable stream from the buffer
-          const readableStream = new stream.PassThrough();
-          readableStream.end(buffer);
+  try {
+    // console.log('Starting Puppeteer...');
+    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const page = await browser.newPage();
+    
+    // console.log('Setting page content...');
+    await page.setContent(pdfTemplate(req.body), { waitUntil: 'networkidle2' });
+    
+    // console.log('Generating PDF...');
+    const buffer = await page.pdf({ format: 'A4', timeout: 120000 });
+    await browser.close();
 
-          const fileName = `pdfs/${userId}_${Date.now()}.pdf`;
-          const file = bucket.file(fileName);
+    // Create a readable stream from the buffer
+    const readableStream = new stream.PassThrough();
+    readableStream.end(buffer);
 
-          await new Promise((resolve, reject) => {
-            const stream = file.createWriteStream({
-              metadata: {
-                contentType: "application/pdf",
-              },
-            });
+    const fileName = `pdfs/${userId}_${Date.now()}.pdf`;
+    const file = bucket.file(fileName);
 
-            readableStream
-              .pipe(stream)
-              .on("finish", () => resolve())
-              .on("error", (error) => reject(error));
-          });
+    await new Promise((resolve, reject) => {
+      const stream = file.createWriteStream({
+        metadata: {
+          contentType: "application/pdf",
+        },
+      });
 
-          const [fileUrl] = await file.getSignedUrl({
-            action: "read",
-            expires: "03-09-2491",
-          });
-
-          // Save Firebase URL to user model's invoices array
-          const user = await User.findById(userId);
-          if (!user) {
-            return res.status(404).send("User not found");
-          }
-
-          user.invoices.push({ url: fileUrl });
-          await user.save();
-
-          // Respond to the client
-          res.send("PDF generated and uploaded to Firebase successfully");
-        } catch (uploadErr) {
-          console.log(uploadErr);
-          res.status(500).send("Error uploading PDF to Firebase");
-        }
-      }
+      readableStream
+        .pipe(stream)
+        .on("finish", () => resolve())
+        .on("error", (error) => {
+          console.error('Upload Error:', error);
+          reject(error);
+        });
     });
+
+    const [fileUrl] = await file.getSignedUrl({
+      action: "read",
+      expires: "03-09-2491",
+    });
+
+    // Save Firebase URL to user model's invoices array
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    user.invoices.push({ url: fileUrl });
+    await user.save();
+
+    // Respond to the client
+    res.send("PDF generated and uploaded to Firebase successfully");
+  } catch (error) {
+    console.error('PDF Generation or Upload Error:', error);
+    res.status(500).send("Error generating or uploading PDF");
+  }
 };
 
 exports.fetchPdf = (req, res) => {
