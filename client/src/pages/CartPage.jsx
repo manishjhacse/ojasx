@@ -87,7 +87,7 @@ export default function CartPage() {
                         // window.open(invoice.data.invoice, '_blank');
                         dispatch(clearCart())
                         console.log(invoice.data.invoice)
-                        navigate("/paymentsuccess",{ state: { url:invoice.data.invoice,allowed:true } })
+                        navigate("/paymentsuccess", { state: { url: invoice.data.invoice, allowed: true } })
                         setPaymentProcessing(false)
 
 
@@ -108,14 +108,21 @@ export default function CartPage() {
         const rzp1 = new window.Razorpay(options);
         rzp1.open();
     }
-    useEffect(() => {
-        checkIsEnrolled()
+    function setAmount() {
         let total = 0;
         cartEvents.forEach((event) => {
             total += event.registration_price;
 
         });
         setTotalAmount(total)
+    }
+    useEffect(() => {
+        setAmount();
+        
+    }, [cartEvents])
+    useEffect(() => {
+        checkIsEnrolled()
+        
     }, [])
 
 
