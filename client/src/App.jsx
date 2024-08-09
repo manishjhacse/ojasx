@@ -14,6 +14,7 @@ import EventsPage from "./pages/EventsPage.jsx";
 import { FaPencilAlt } from "react-icons/fa";
 import CartPage from "./pages/CartPage";
 import { changeLoggedIn } from "./store/loginSlice";
+import DetailPage from "./pages/DetailPage.jsx";
 export default function App() {
   const dispatch = useDispatch();
   const isLoggedIn = () => {
@@ -45,7 +46,7 @@ export default function App() {
         <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/mycart" element={<CartPage />} />
         <Route path="/events" element={<EventsPage />} />
-
+        <Route path="/detail" element={<DetailPage />} />
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
     </div>
