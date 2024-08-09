@@ -124,10 +124,7 @@ function Navbar() {
             className="menu menu-sm dropdown-content  bg-neutral-800 text-white  rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link className="justify-between ">Profile</Link>
-            </li>
-            <li>
-              <Link>My Events</Link>
+              <Link to="/myevents">My Events</Link>
             </li>
             {loggedIn && (
               <li onClick={handleLogout}>

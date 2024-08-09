@@ -2,42 +2,43 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Cards from '../components/Cards'
 import { PiCurrencyInrBold } from "react-icons/pi";
-import { Link } from 'react-router-dom';
-import { clearCart } from '../store/cartSlice';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { clearCart, removeFromCart } from '../store/cartSlice';
 import axios from 'axios';
 
 export default function CartPage() {
+    const navigate = useNavigate();
+    const [paymentProcessing, setPaymentProcessing] = useState(false)
+    const loggedIn = useSelector(state => state.loggedIn)
     const loggedInUser = useSelector(state => state.loggedInUser);
     const [showAlert, setShowAlert] = useState(false);
     const cartEvents = useSelector(state => state.cart);
+    const myEvents = useSelector(state => state.myEvents)
     const dispatch = useDispatch();
     const [totalAmount, setTotalAmount] = useState(0);
-    useEffect(() => {
-        let total = 0;
-        cartEvents.forEach((event) => {
-            total += event.registration_price;
-        });
-        let discount = 0;
-        if (loggedInUser.college === "B. P. MANDAL COLLEGE OF ENGINEERING, MADHEPURA") {
-            discount += 150;
-        }
-        for (let i = 1; i <= cartEvents.length; i++) {
-            discount += ((i - 1) % 6) * 10;
-        }
-        setTotalAmount(total - discount)
 
-    }, [])
     function handleClearCart() {
         dispatch(clearCart());
         setShowAlert(false)
     }
+
+    function checkIsEnrolled() {
+        cartEvents.forEach((event) => {
+            if (myEvents.some((myEvent) => myEvent._id === event._id)) {
+                dispatch(removeFromCart(event));
+            }
+        });
+    }
+
+
     const handlePayment = async () => {
         try {
             const url = import.meta.env.VITE_BASE_URL;
             const res = await axios.post(`${url}/order`, { amount: totalAmount }, {
                 withCredentials: true
             })
-            handlePaymentVerify(res.data.data);
+            await handlePaymentVerify(res.data.data);
+
         } catch (error) {
             console.log(error);
         }
@@ -49,22 +50,24 @@ export default function CartPage() {
             event_name: event.event_name,
             reg_price: event.registration_price,
         }));
-        const emailOptions = {
+        const pdfOptions = {
             name: loggedInUser.name,
             email: loggedInUser.email,
-            reg: loggedInUser.registration_no,
+            userId: loggedInUser._id,
             events: events
         }
         const options = {
             key: import.meta.env.VITE_RAZORPAY_KEY_ID,
             amount: data.amount,
             currency: data.currency,
-            name: "Manish Jha",
+            // name: "Manish Jha",
             description: "Test Mode",
             order_id: data.id,
             handler: async (response) => {
                 console.log("response", response)
                 try {
+
+                    setPaymentProcessing(true)
                     const url = import.meta.env.VITE_BASE_URL;
                     const res = await axios.post(`${url}/verify`, {
                         razorpay_order_id: response.razorpay_order_id,
@@ -75,15 +78,18 @@ export default function CartPage() {
                     })
                     if (res.data.success) {
 
-                        const res = await axios.post(`${url}/createPdf`, emailOptions, {
+                        const res = await axios.post(`${url}/createPdf`, pdfOptions, {
                             withCredentials: true
                         })
-                        const send = await axios.post(`${url}/sendPdf`, { email: loggedInUser.email, reg: loggedInUser.registration_no }, {
+                        const invoice = await axios.post(`${url}/sendPdf`, { email: loggedInUser.email, userId: loggedInUser._id }, {
                             withCredentials: true
                         })
-                        // const pdf = await axios.post(`${url}/fetchPdf`, { reg: loggedInUser.registration_no }, {
-                        //     withCredentials: true
-                        // })
+
+                        window.open(invoice.data.invoice, '_blank');
+                        dispatch(clearCart())
+                        navigate("/myevents")
+                        setPaymentProcessing(false)
+
 
                     }
                     const verifyData = res;
@@ -92,6 +98,7 @@ export default function CartPage() {
                     }
                 } catch (error) {
                     console.log(error);
+                    setPaymentProcessing(false)
                 }
             },
             theme: {
@@ -101,6 +108,17 @@ export default function CartPage() {
         const rzp1 = new window.Razorpay(options);
         rzp1.open();
     }
+    useEffect(() => {
+        checkIsEnrolled()
+        let total = 0;
+        cartEvents.forEach((event) => {
+            total += event.registration_price;
+
+        });
+        setTotalAmount(total)
+    }, [])
+
+
 
     if (cartEvents.length == 0) {
         return <div className="flex gap-2 w-full min-h-screen flex-col justify-center items-center">
@@ -164,6 +182,18 @@ export default function CartPage() {
                                     Cancel
                                 </button>
                             </div>
+                        </div>
+
+
+
+
+                        <div
+                            className={`fixed gap-y-2 bg-opacity-85 bottom-1/2 left-[50%] -translate-x-1/2 translate-y-1/2 bg-white text-black z-20 w-[90%] px-2 flex flex-col items-center md:w-[400px] ${paymentProcessing ? "scale-100" : "scale-0"
+                                } rounded-md h-[150px] justify-center transition-all duration-200`}
+                        >
+                            <p className='text-xl font-bold'>Payment Proccesing...</p>
+                            <p className='w-full text-center'>Please do not refreh the page or press the back button</p>
+                            <p className='font-bold text-xl'>Thank You</p>
                         </div>
                     </div>
                 )}

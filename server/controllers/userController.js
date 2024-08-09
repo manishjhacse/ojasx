@@ -279,7 +279,6 @@ exports.userEvents = async (req, res) => {
     const userId = req.user._id;
     // Populate the eventId field within the events array
     const user = await User.findById(userId).populate("events");
-    console.log(user)
     if (!user || !user.events || user.events.length === 0) {
       return res.status(404).json({
         success: false,

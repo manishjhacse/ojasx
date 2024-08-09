@@ -1,23 +1,31 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../store/cartSlice";
 import { toast } from "react-hot-toast";
+import { FaArrowRight } from "react-icons/fa";
+import { FaCartArrowDown } from "react-icons/fa";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { MdDeleteSweep } from "react-icons/md";
 export default function App({ event, fromCart }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isBought, setIsBought] = useState(false);
+  const myEvents = useSelector(state => state.myEvents)
   const cart = useSelector((state) => state.cart);
   const [addedToCart, setAddedToCart] = useState(false);
-  useState(() => {
+  useEffect(() => {
     if (cart.some((cartEvent) => cartEvent._id === event._id)) {
       setAddedToCart(true)
     }
-  }, [])
+    if (myEvents.some((myEvent) => myEvent._id === event._id)) {
+      setIsBought(true)
+    }
+  }, [myEvents])
+
   function handleRemoveFromCart() {
     dispatch(removeFromCart(event))
     toast.success("Event Removed from Cart")
@@ -52,27 +60,36 @@ export default function App({ event, fromCart }) {
         />
         <CardFooter className="justify-between bg-black font-poppins  bg-opacity-50 before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl  bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
           <p className="text-small text-white font-semibold">{event.event_name}</p>
-          <div className="z-40"> {
-            fromCart ? <Button
-              onClick={handleRemoveFromCart}
+          {
+            !isBought ? <div className="z-40"> {
+              fromCart ? <Button
+                onClick={handleRemoveFromCart}
+                className="text-tiny text-white hover:bg-opacity-80 bg-black opacity-65"
+                variant="flat"
+                color="default"
+                radius="lg"
+                size="sm"
+              >
+                <MdDeleteSweep className=" text-white sm:w-5 sm:h-5 w-5 h-5" />
+              </Button> : <Button
+                onClick={handleAddToCart}
+                className="text-tiny text-white hover:bg-opacity-80 bg-black opacity-65"
+                variant="flat"
+                color="default"
+                radius="lg"
+                size="sm"
+              >
+                {addedToCart ? <FaArrowRight className=" text-white sm:w-5 sm:h-5 w-5 h-5" /> : <FaCartArrowDown className=" text-white sm:w-5 sm:h-5 w-5 h-5" />}
+              </Button>
+            }</div> : <Button
               className="text-tiny text-white hover:bg-opacity-80 bg-black opacity-65"
               variant="flat"
               color="default"
               radius="lg"
               size="sm"
-            >
-              <MdDeleteSweep className=" text-white sm:w-5 sm:h-5 w-5 h-5" />
-            </Button> : <Button
-              onClick={handleAddToCart}
-              className="text-tiny text-white hover:bg-opacity-80 bg-black opacity-65"
-              variant="flat"
-              color="default"
-              radius="lg"
-              size="sm"
-            >
-              {addedToCart ? <IoBagCheckOutline className=" text-white sm:w-5 sm:h-5 w-5 h-5" /> : <BsFillHandbagFill className=" text-white sm:w-5 sm:h-5 w-5 h-5" />}
+            >Enrolled
             </Button>
-          }</div>
+          }
 
 
 
