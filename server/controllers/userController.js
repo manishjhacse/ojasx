@@ -20,7 +20,7 @@ async function uploadFileToCloudinary(file, folder, quality) {
 // signup controller
 exports.signup = async (req, res) => {
   try {
-    const { name, email, password, mobile, otp, college } = req.body;
+    const { name, email, password, mobile, otp, college,registration_no } = req.body;
     // const file = req.files?.image;
     email.toLowerCase();
     const existingUser = await User.findOne({ email });
@@ -75,6 +75,7 @@ exports.signup = async (req, res) => {
         mobile,
         // profile_pic: imageurl,
         college,
+        registration_no
       },
       { new: true }
     );
@@ -271,6 +272,37 @@ exports.changePassword = async (req, res) => {
     });
   }
 };
+
+//get user enrolled events
+exports.userEvents = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    // Populate the eventId field within the events array
+    const user = await User.findById(userId).populate("events");
+    if (!user || !user.events || user.events.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "User is not enrolled in any event",
+      });
+    } else {
+      // Extract the populated event data
+      return res.status(200).json({
+        success: true,
+        message: "Events found",
+        events: user.events,
+      });
+    }
+  } catch (err) {
+    console.error("Error fetching events:", err);
+    return res.status(503).json({
+      success: false,
+      message: "Unable to fetch events, try again",
+      error: err.message,
+    });
+  }
+};
+
+
 
 
 //logout

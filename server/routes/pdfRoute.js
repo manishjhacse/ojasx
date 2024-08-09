@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.post('/createPdf',createPdf) // to generate pdf
-router.get('/fetchPdf',fetchPdf) // to get pdf
+router.post('/fetchPdf',fetchPdf) // to get pdf
 router.post('/sendPdf',sendPdf) //sentpdf to mail mail
 
 

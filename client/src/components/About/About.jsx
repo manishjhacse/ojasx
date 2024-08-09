@@ -4,17 +4,17 @@ import logo from "../../assests/logo.png";
 const About = () => {
   return (
     <div className="font-poppins">
-      <div class="container">
-        <div class="heading">
+      <div className="container">
+        <div className="heading">
           <span>YOU MIGHT BE</span>
           <br />
           <span>THINKING WHAT IS</span>
           <br />
-          <span class="heading-blue">
-            OJAS'X<span class="heading-white">?</span>
+          <span className="heading-blue">
+            OJAS'X<span className="heading-white">?</span>
           </span>
         </div>
-        <div class="content content-responsive">
+        <div className="content content-responsive">
           OJAS'X is the annual tech fest organized by our college, where
           students and tech enthusiasts come together to showcase their
           innovations, participate in competitions, attend workshops, and much
@@ -25,10 +25,10 @@ const About = () => {
           us to explore the latest in technology and to push the boundaries of
           what’s possible.
         </div>
-        <div class="about-section">
-          <div class="about-text">
-            <h2 class="about-heading font-bold md:font-extrabold">ABOUT</h2>
-            <p class="p-responsive">
+        <div className="about-section">
+          <div className="about-text">
+            <h2 className="about-heading font-bold md:font-extrabold">ABOUT</h2>
+            <p className="p-responsive">
               OJAS'X is not just an event, it's an experience. From coding
               challenges to robotic competitions, from technical talks to
               hands-on workshops, OJAS'X offers something for everyone. Join us
@@ -39,12 +39,12 @@ const About = () => {
               compete, and showcase your talents.
             </p>
           </div>
-          <div class="about-image ">
+          <div className="about-image ">
             <img src={logo} alt="OJAS'X Tech Fest" />
           </div>
         </div>
-        <div class="explore overflow-hidden ">
-          <div class="explore-text explore-text-1 aimate-text">
+        <div className="explore overflow-hidden ">
+          <div className="explore-text explore-text-1 aimate-text">
             <span className="text-[#9000FF]">EXPLORE AND DISCOVER</span>{" "}
             <span className="text-white">EXPLORE AND DISCOVER</span>{" "}
             <span className="text-[#9000FF]">EXPLORE AND DISCOVER</span>{" "}
@@ -54,7 +54,7 @@ const About = () => {
             <span className="text-[#9000FF]">EXPLORE AND DISCOVER</span>{" "}
             <span className="text-white">EXPLORE AND DISCOVER</span>
           </div>
-          <div class="explore-text explore-text-2 aimate-text-2">
+          <div className="explore-text explore-text-2 aimate-text-2">
             <span className="text-[#9000FF]">OJAS'X TECH FEST</span>{" "}
             <span className="text-white">OJAS'X TECH FEST</span>{" "}
             <span className="text-[#9000FF]">OJAS'X TECH FEST</span>{" "}

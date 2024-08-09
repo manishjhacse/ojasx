@@ -43,10 +43,10 @@ export default function LoginPage() {
     await login();
   }
   return (
-    <div className="w-screen h-screen flex justify-center items-center ">
-      <h1 className="text-black ">Log In</h1>
+    <div className="w-screen h-screen flex justify-center items-center px-2 ">
+
       <form
-        className="text-black flex flex-col py-10 justify-center w-96 items-center bg-white border-3 rounded-3xl border-yellow-500 gap-5"
+        className="text-black flex flex-col  py-10 justify-center px-2 w-fit items-center bg-white border-3 rounded-3xl border-yellow-500 gap-5"
         onSubmit={handleLogin}
       >
         <h1 className="text-black font-extrabold ">Log In</h1>

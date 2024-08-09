@@ -7,6 +7,7 @@ import axios from "axios";
 import { Button } from "@nextui-org/react";
 
 export default function SignUp() {
+  const navigate=useNavigate()
   const [optSent, setOptSent] = useState(false);
   const [buttonText, setButtonText] = useState("Sign Up");
   const [optText, setOptText] = useState("Send OTP");
@@ -17,49 +18,49 @@ export default function SignUp() {
     confirmPassword: "",
     mobile: "",
     otp: "",
-    registraion_no: "",
-    college: "",
+    // registration_no: "",
+    // college: "",
   });
-  const collegeOptions = [
-    "BAKHTIYARPUR COLLEGE OF ENGINEERING, PATNA",
-    "B. P. MANDAL COLLEGE OF ENGINEERING, MADHEPURA",
-    "BHAGALPUR COLLEGE OF ENGINEERING, BHAGALPUR",
-    "DARBHANGA COLLEGE OF ENGINEERING, DARBHANGA",
-    "GAYA COLLEGE OF ENGINEERING, GAYA",
-    "GOVERNMENT ENGINEERING COLLEGE, ARWAL",
-    "GOVERNMENT ENGINEERING COLLEGE, AURANGABAD",
-    "GOVERNMENT ENGINEERING COLLEGE, BANKA",
-    "GOVERNMENT ENGINEERING COLLEGE, BHOJPUR",
-    "GOVERNMENT ENGINEERING COLLEGE, BUXAR",
-    "GOVERNMENT ENGINEERING COLLEGE, GOPALGANJ",
-    "GOVERNMENT ENGINEERING COLLEGE, JAMUI",
-    "GOVERNMENT ENGINEERING COLLEGE, JEHANABAD",
-    "GOVERNMENT ENGINEERING COLLEGE, KAIMUR",
-    "GOVERNMENT ENGINEERING COLLEGE, KHAGARIA",
-    "GOVERNMENT ENGINEERING COLLEGE, KISHANGANJ",
-    "GOVERNMENT ENGINEERING COLLEGE, LAKHISARAI",
-    "GOVERNMENT ENGINEERING COLLEGE, MADHUBANI",
-    "GOVERNMENT ENGINEERING COLLEGE, MUNGER",
-    "GOVERNMENT ENGINEERING COLLEGE, NAWADA",
-    "GOVERNMENT ENGINEERING COLLEGE, SHEIKHPURA",
-    "GOVERNMENT ENGINEERING COLLEGE, SHEOHAR",
-    "GOVERNMENT ENGINEERING COLLEGE, SIWAN",
-    "GOVERNMENT ENGINEERING COLLEGE, VAISHALI",
-    "GOVERNMENT ENGINEERING COLLEGE, WEST CHAMPARAN",
-    "KATIHAR ENGINEERING COLLEGE, KATIHAR",
-    "LOK NAYAK JAI PRAKASH INSTITUTE OF TECHNOLOGY, CHAPRA",
-    "MOTIHARI COLLEGE OF ENGINEERING, MOTIHARI",
-    "MUZAFFARPUR INSTITUTE OF TECHNOLOGY, MUZAFFARPUR",
-    "NETAJI SUBHAS INSTITUTE OF TECHNOLOGY, BIHTA",
-    "PURNEA COLLEGE OF ENGINEERING, PURNEA",
-    "RASHTRAKAVI RAMDHARI SINGH DINKAR COLLEGE OF ENGINEERING, BEGUSARAI",
-    "SAHARSA COLLEGE OF ENGINEERING, SAHARSA",
-    "SERSHAH ENGINEERING COLLEGE, SASARAM, ROHTAS",
-    "Shri Phanishwar Nath Renu Engineering College, Araria",
-    "SITAMARHI INSTITUTE OF TECHNOLOGY, SITAMARHI",
-    "SUPAUL COLLEGE OF ENGINEERING, SUPAUL",
-    "VIDYA VIHAR INSTITUTE OF TECHNOLOGY, PURNIA"
-  ]
+  // const collegeOptions = [
+  //   "BAKHTIYARPUR COLLEGE OF ENGINEERING, PATNA",
+  //   "B. P. MANDAL COLLEGE OF ENGINEERING, MADHEPURA",
+  //   "BHAGALPUR COLLEGE OF ENGINEERING, BHAGALPUR",
+  //   "DARBHANGA COLLEGE OF ENGINEERING, DARBHANGA",
+  //   "GAYA COLLEGE OF ENGINEERING, GAYA",
+  //   "GOVERNMENT ENGINEERING COLLEGE, ARWAL",
+  //   "GOVERNMENT ENGINEERING COLLEGE, AURANGABAD",
+  //   "GOVERNMENT ENGINEERING COLLEGE, BANKA",
+  //   "GOVERNMENT ENGINEERING COLLEGE, BHOJPUR",
+  //   "GOVERNMENT ENGINEERING COLLEGE, BUXAR",
+  //   "GOVERNMENT ENGINEERING COLLEGE, GOPALGANJ",
+  //   "GOVERNMENT ENGINEERING COLLEGE, JAMUI",
+  //   "GOVERNMENT ENGINEERING COLLEGE, JEHANABAD",
+  //   "GOVERNMENT ENGINEERING COLLEGE, KAIMUR",
+  //   "GOVERNMENT ENGINEERING COLLEGE, KHAGARIA",
+  //   "GOVERNMENT ENGINEERING COLLEGE, KISHANGANJ",
+  //   "GOVERNMENT ENGINEERING COLLEGE, LAKHISARAI",
+  //   "GOVERNMENT ENGINEERING COLLEGE, MADHUBANI",
+  //   "GOVERNMENT ENGINEERING COLLEGE, MUNGER",
+  //   "GOVERNMENT ENGINEERING COLLEGE, NAWADA",
+  //   "GOVERNMENT ENGINEERING COLLEGE, SHEIKHPURA",
+  //   "GOVERNMENT ENGINEERING COLLEGE, SHEOHAR",
+  //   "GOVERNMENT ENGINEERING COLLEGE, SIWAN",
+  //   "GOVERNMENT ENGINEERING COLLEGE, VAISHALI",
+  //   "GOVERNMENT ENGINEERING COLLEGE, WEST CHAMPARAN",
+  //   "KATIHAR ENGINEERING COLLEGE, KATIHAR",
+  //   "LOK NAYAK JAI PRAKASH INSTITUTE OF TECHNOLOGY, CHAPRA",
+  //   "MOTIHARI COLLEGE OF ENGINEERING, MOTIHARI",
+  //   "MUZAFFARPUR INSTITUTE OF TECHNOLOGY, MUZAFFARPUR",
+  //   "NETAJI SUBHAS INSTITUTE OF TECHNOLOGY, BIHTA",
+  //   "PURNEA COLLEGE OF ENGINEERING, PURNEA",
+  //   "RASHTRAKAVI RAMDHARI SINGH DINKAR COLLEGE OF ENGINEERING, BEGUSARAI",
+  //   "SAHARSA COLLEGE OF ENGINEERING, SAHARSA",
+  //   "SERSHAH ENGINEERING COLLEGE, SASARAM, ROHTAS",
+  //   "Shri Phanishwar Nath Renu Engineering College, Araria",
+  //   "SITAMARHI INSTITUTE OF TECHNOLOGY, SITAMARHI",
+  //   "SUPAUL COLLEGE OF ENGINEERING, SUPAUL",
+  //   "VIDYA VIHAR INSTITUTE OF TECHNOLOGY, PURNIA"
+  // ]
     ;
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -73,7 +74,7 @@ export default function SignUp() {
       });
       toast.success("Account created");
       setButtonText("Sign Up");
-      navigate("/login");
+      
     } catch (err) {
       toast.error(err.response.data.message);
     }
@@ -87,13 +88,12 @@ export default function SignUp() {
       confirmPassword: "",
       mobile: "",
       otp: "",
-      registraion_no: "",
-      college: "",
     };
     setFormData(blankFormData);
     setOptSent(false);
     setButtonText("Sign Up");
     setOptText("Send OTP");
+    navigate("/login")
   }
   async function handleSubmit(e) {
     e.preventDefault();
@@ -109,9 +109,7 @@ export default function SignUp() {
       formData.name == "" ||
       formData.email == "" ||
       formData.confirmPassword == "" ||
-      formData.mobile == "" ||
-      formData.registraion_no == "" ||
-      formData.college == ""
+      formData.mobile == ""
     ) {
       toast.error("please fill all the details");
       return;
@@ -158,8 +156,23 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
+             {/* mobile */}
+             <div className="text-black flex flex-col items-start w-fit">
+              <label htmlFor="mobile" className="p-2 text-lg ">
+                Mobile:
+              </label>
+              <input
+                id="mobile"
+                className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
+                type="text"
+                name="mobile"
+                placeholder="Enter your Phone no."
+                value={formData.mobile}
+                onChange={handleChange}
+              />
+            </div>
             {/* registration no */}
-            <div className="text-black flex flex-col items-start w-fit">
+            {/* <div className="text-black flex flex-col items-start w-fit">
               <label htmlFor="registraion_no" className="p-2  text-lg">
                 Registration No:
               </label>
@@ -167,14 +180,14 @@ export default function SignUp() {
                 id="registraion_no"
                 className="px-2 py-1.5 outline-none w-48 md:w-60 border border-black bg-transparent text-black rounded-full"
                 type="text"
-                name="registraion_no"
+                name="registration_no"
                 placeholder="Enter Registraion No.*"
-                value={formData.registraion_no}
+                value={formData.registration_no}
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
             {/* college */}
-            <div className="text-black flex flex-col items-start w-fit">
+            {/* <div className="text-black flex flex-col items-start w-fit">
               <label htmlFor="college" className="p-2  text-lg">
                 College:
               </label>
@@ -202,7 +215,7 @@ export default function SignUp() {
                   );
                 })}
               </select>
-            </div>
+            </div> */}
             {/* email */}
             <div className="text-black flex flex-col items-start w-fit">
               <label htmlFor="email" className="p-2 text-lg">
@@ -251,21 +264,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            {/* mobile */}
-            <div className="text-black flex flex-col items-start w-fit">
-              <label htmlFor="mobile" className="p-2 text-lg ">
-                Mobile:
-              </label>
-              <input
-                id="mobile"
-                className="px-2 py-1.5 outline-none border w-60 border-black bg-transparent text-black rounded-full"
-                type="text"
-                name="mobile"
-                placeholder="Enter your Phone no."
-                value={formData.mobile}
-                onChange={handleChange}
-              />
-            </div>
+           
             {/* otp field */}
             {optSent && (
               <div className="text-black flex flex-col items-start w-fit">
