@@ -113,7 +113,9 @@ function DetailPage() {
             {/*  */}
             {
               isBought ?
-                <div className="card-actions justify-end"><Button onClick={() => {
+                <div className="card-actions justify-end">
+                  
+                  <Button onClick={() => {
                   toast.success("Already Enrolled")
                 }}
                   className=" w-fit text-[15px] text-white hover:bg-opacity-80 bg-black opacity-65"
@@ -122,12 +124,17 @@ function DetailPage() {
                   radius="lg"
                   size="sm"
                 >Enrolled
-                </Button> </div> : <div className="card-actions justify-end">
+                </Button> </div> : <div className="card-actions justify-between items-center">
+                <span className="flex items-center bg-red-500 px-2 py-1 rounded-full z-50"><FaRupeeSign />{event?.registration_price}</span>
+                <div className="card-actions  justify-end">
+
+                
                   {
                     addedToCart ? <button onClick={handleRemoveFromCart} className="btn btn-error sm:text-base text-xs font-bold">Remove From Cart</button> : <button onClick={handleAddToCart} className="btn btn-primary sm:text-base text-xs font-bold">Add to Cart</button>
                   }
 
                   <button onClick={handleRegister} className="btn btn-primary sm:text-base text-xs font-bold">Register</button>
+                </div>
                 </div>
             }
 
@@ -166,11 +173,12 @@ function DetailPage() {
       </div> */}
 
       <div className="w-10/12 gap-10 mt-28 flex flex-col">
-        <h1 className="text-xl font-bold">Similar Events:</h1>
+        <h1 className="text-3xl font-bold">Similar Events:</h1>
         <div className="flex flex-wrap gap-4">{similarEvent?.map((event)=>{
           return <Cards key={event?._id} event={event} />
         })}</div>
       </div>
+      
     </div>
   );
 }

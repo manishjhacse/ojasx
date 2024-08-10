@@ -9,6 +9,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaCartArrowDown } from "react-icons/fa";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
+import { FaRupeeSign } from "react-icons/fa";
 import { MdDeleteSweep } from "react-icons/md";
 export default function App({ event, fromCart }) {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ export default function App({ event, fromCart }) {
   }
 
   return (
-      <Card className="col-span-12 sm:col-span-4 md:h-[300px] md:w-[240px] h-[250px] w-[200px]">
+      <Card className="col-span-12 relative sm:col-span-4 md:h-[300px] md:w-[240px] h-[250px] w-[200px]">
         {/* <CardHeader className="absolute z-20 top-1 flex-col !items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">
             What to watch
@@ -59,7 +60,7 @@ export default function App({ event, fromCart }) {
             src={event.poster}
           />
         </Link>
-        <CardFooter className="justify-between bg-black font-poppins  bg-opacity-50 before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl  bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+        <CardFooter className=" justify-between bg-black font-poppins  bg-opacity-50 before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl  bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
           <Link className="text-white hover:no-underline" to={`/event/${event._id}`}>
             <p className="text-small text-white font-semibold">{event.event_name}</p>
           </Link>
@@ -97,6 +98,9 @@ export default function App({ event, fromCart }) {
 
 
         </CardFooter>
+      
+      
+      <span className="absolute top-0 right-0 flex items-center bg-red-500 px-2 py-1 rounded-l-full z-50"><FaRupeeSign />{event?.registration_price}</span>
       </Card>
     
   );
