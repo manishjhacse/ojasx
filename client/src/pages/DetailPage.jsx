@@ -1,50 +1,157 @@
-import React from "react";
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
-
+import React, { useEffect, useState } from "react";
+import { Tabs, Tab, Card, CardBody, Button } from "@nextui-org/react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { FaRupeeSign } from "react-icons/fa";
+import { toast } from "react-hot-toast";
+import { addToCart, removeFromCart } from "../store/cartSlice";
+import Cards from "../components/Cards"
 function DetailPage() {
+  const navigate = useNavigate()
+  const events = useSelector(state => state.events);
+  const dispatch = useDispatch()
+  const [isBought, setIsBought] = useState(false)
+  const [addedToCart, setAddedToCart] = useState(false)
+  const cartEvents = useSelector(state => state.cart)
+  const myEvents = useSelector(state => state.myEvents)
+  const { eventId } = useParams();
+  const [event, setEvent] = useState(null)
+  const [similarEvent, setSimilarEvent] = useState(null)
+  const getSimilarEvents = () => {
+    const allEventOfCategory = events?.filter((e) => e?.category === event?.category)
+    const similarevent=allEventOfCategory.filter((e)=>e?._id!==event._id)
+    setSimilarEvent(similarevent)
+  }
+  const getEventDetails = () => {
+    const pageEvent = events?.find(event => event?._id === eventId);
+    setEvent(pageEvent)
+  }
+  const checkIsBought = () => {
+    if (myEvents?.some((myEvent) => myEvent?._id === event?._id)) {
+      setIsBought(true)
+    }else{
+      setIsBought(false)
+    }
+  }
+  const isPresentInCart = () => {
+    if (cartEvents?.some((cartEvent) => cartEvent?._id === event?._id)) {
+      setAddedToCart(true)
+    }else{
+      setAddedToCart(false)
+    }
+  }
+  const handleAddToCart = () => {
+    dispatch(addToCart(event))
+    setAddedToCart(true)
+  }
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(event))
+    setAddedToCart(false)
+  }
+  const handleRegister = () => {
+    if (!addedToCart) {
+      handleAddToCart();
+    }
+    navigate("/mycart")
+  }
+  useEffect(() => {
+    if (eventId) {
+      getEventDetails();
+      window.scrollTo(0, 0);
+      getSimilarEvents();
+    }
+  }, [eventId, events]); // Include dependencies
+
+  useEffect(() => {
+    console.log(eventId)
+    if (event?._id) {
+      checkIsBought();
+      isPresentInCart();
+      getSimilarEvents();
+    }
+  }, [cartEvents, myEvents, event,eventId]);
   return (
-    <div className=" flex flex-col items-center  justify-center   ">
-    <div className="w-screen flex  justify-center ">
-      {/* card */}
-      <div className="card lg:card-side w-[1300px]  bg-neutral-900 shadow-xl md:mx-36 mt-1">
-        <figure>
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-            alt="Album"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">New album is released!</h2>
-          <p>Click the button to listen on Spotiwhy app.</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
+    <div className=" flex flex-col items-center min-h-screen  justify-start py-5">
+      <div className="w-screen flex  justify-center ">
+        {/* card */}
+        <div className="card lg:card-side w-[1300px]  bg-neutral-900 shadow-xl">
+          <figure className="min-w-[300px]">
+            <img className="w-[240px] h-[300px]"
+              src={event?.poster}
+              alt="Album"
+            />
+          </figure>
+          <div className="card-body px-3 md:px-8">
+            <h2 className="card-title">{event?.event_name}</h2>
+            {/*  */}
+            <Tabs aria-label="Options">
+              <Tab key="about" title="About">
+                <Card>
+                  <CardBody>
+                    {
+                      event?.about
+                    }
+                  </CardBody>
+                </Card>
+              </Tab>
+              <Tab key="contact" title="Contact">
+                <Card>
+                  <CardBody>
+                    <span>{event?.event_managers?.name}</span> <a className=" hover:text-white hover:no-underline" href={`tel:+91${event?.event_managers?.mobile}`}>{event?.event_managers?.mobile}</a>
+                  </CardBody>
+                </Card>
+              </Tab>
+              <Tab key="Prize" title="Prize">
+                <Card>
+                  <CardBody >
+                    <p className="flex items-center gap-2">Winner: <span className="flex items-center "><FaRupeeSign />{event?.winner_prize}</span></p>
+                    <p className="flex items-center gap-2">Runner Up: <span className="flex items-center "><FaRupeeSign />{event?.runnerup_prize}</span></p>
+                  </CardBody>
+                </Card>
+              </Tab>
+            </Tabs>
+            {/*  */}
+            {
+              isBought ?
+                <div className="card-actions justify-end"><Button onClick={() => {
+                  toast.success("Already Enrolled")
+                }}
+                  className=" w-fit text-[15px] text-white hover:bg-opacity-80 bg-black opacity-65"
+                  variant="flat"
+                  color="default"
+                  radius="lg"
+                  size="sm"
+                >Enrolled
+                </Button> </div> : <div className="card-actions justify-end">
+                  {
+                    addedToCart ? <button onClick={handleRemoveFromCart} className="btn btn-error sm:text-base text-xs font-bold">Remove From Cart</button> : <button onClick={handleAddToCart} className="btn btn-primary sm:text-base text-xs font-bold">Add to Cart</button>
+                  }
+
+                  <button onClick={handleRegister} className="btn btn-primary sm:text-base text-xs font-bold">Register</button>
+                </div>
+            }
+
           </div>
         </div>
       </div>
-      </div>
 
       {/* details */}
-      <div className="flex sm:w-[750px] lg:w-[1660px] md:px-52 mt-3 flex-col">
+      {/* <div className="flex sm:w-[750px] lg:w-[1660px] md:px-52 mt-3 flex-col">
         <Tabs aria-label="Options">
-          <Tab key="photos" title="Photos">
+          <Tab key="about" title="About">
             <Card>
               <CardBody>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eveniet aliquam ut ratione earum impedit asperiores cum debitis vitae. Optio, magni beatae odit ut aliquam et voluptatibus minus voluptatum, facere voluptas reiciendis debitis, iure doloremque eaque numquam sequi sed a? Omnis id autem sequi repellendus, nihil earum sed placeat veritatis veniam cumque quia provident debitis rem eligendi nesciunt unde cupiditate? Repellat ut omnis inventore adipisci laboriosam debitis delectus molestias nam commodi unde ullam repellendus laborum aliquam non labore assumenda, optio veritatis! Iure consequatur atque maiores doloremque temporibus nobis est, eum a veritatis placeat id impedit exercitationem explicabo saepe laudantium quisquam.
-              </CardBody>
+                {
+                  event?.about
+                }
+               </CardBody>
             </Card>
           </Tab>
-          <Tab key="music" title="Music">
+          <Tab key="contact" title="Contact">
             <Card>
               <CardBody>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus necessitatibus animi non quaerat possimus! Amet, deleniti quisquam possimus blanditiis dolor, exercitationem necessitatibus consequatur error officia cum sapiente esse voluptate minima ipsum quasi voluptates quod doloremque non dolores ipsam soluta veniam vel praesentium? Qui, nam est debitis, quasi dolores enim voluptatum nesciunt reprehenderit natus maiores deleniti nisi dicta culpa beatae modi? Earum iste dolores excepturi amet iusto, ad voluptates magni dolore eaque praesentium deserunt veniam molestias doloremque ratione autem mollitia, necessitatibus enim? Molestias, ut quibusdam similique sequi illo labore accusantium aut distinctio magnam voluptate, consequatur est inventore esse cupiditate, possimus earum?
-              </CardBody>
+                <span>{event?.event_managers?.name}</span> <span>{event?.event_managers?.mobile}</span>
+                </CardBody>
             </Card>
           </Tab>
           <Tab key="videos" title="Videos">
@@ -56,6 +163,13 @@ function DetailPage() {
             </Card>
           </Tab>
         </Tabs>
+      </div> */}
+
+      <div className="w-10/12 gap-10 mt-28 flex flex-col">
+        <h1 className="text-xl font-bold">Similar Events:</h1>
+        <div className="flex flex-wrap gap-4">{similarEvent?.map((event)=>{
+          return <Cards key={event?._id} event={event} />
+        })}</div>
       </div>
     </div>
   );

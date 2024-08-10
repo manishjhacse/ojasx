@@ -3,8 +3,8 @@ import "./style.css";
 import logo from "../../assests/logo.png";
 const About = () => {
   return (
-    <div className="font-poppins">
-      <div className="container">
+    <div className="font-poppins flex justify-center w-full">
+      <div className="container md:w-10/12">
         <div className="heading">
           <span>YOU MIGHT BE</span>
           <br />

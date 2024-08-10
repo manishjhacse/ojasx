@@ -5,6 +5,7 @@ export default function CreateEvent() {
   const [formData, setFormData] = useState({
     event_name: "",
     about: "",
+    event_date:"",
     registration_price: "",
     event_managers: { name: "", mobile: "" },
     winner_prize: "",
@@ -44,6 +45,7 @@ export default function CreateEvent() {
       JSON.stringify(formData.event_managers)
     );
     formDataToSend.append("category", formData.category);
+    formDataToSend.append("event_date", formData.event_date);
     formDataToSend.append("event_name", formData.event_name);
     formDataToSend.append("registration_price", formData.registration_price);
     formDataToSend.append("winner_prize", formData.winner_prize);
@@ -72,6 +74,7 @@ export default function CreateEvent() {
     const emptyFormData = {
       event_name: "",
       about: "",
+      event_date:"",
       registration_price: "",
       event_managers: {
         name: "", mobile: ""
@@ -160,6 +163,20 @@ export default function CreateEvent() {
             name="category"
             placeholder="Event category"
             value={formData.category}
+            onChange={handleFormData}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="event_date">
+            event Date<span className="text-black">*</span>
+          </label>
+          <input
+            id="event_date"
+            className="px-2 py-1.5 md:w-[150px] w-[200px] rounded-md outline-none border border-white bg-transparent text-white"
+            type="text"
+            name="event_date"
+            placeholder="Event Date"
+            value={formData.event_date}
             onChange={handleFormData}
           />
         </div>

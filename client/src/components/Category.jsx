@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { Button } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 const category = [
   {
-    image: "https://i.pinimg.com/564x/54/68/a3/5468a33bc43e258995f15ad01e5ad7cc.jpg",
+    image: "https://i.pinimg.com/564x/07/e2/f2/07e2f21823f78b1d4ece115f630f88a0.jpg",
     category: "Gaming"
   },
   {
-    image: "https://i.pinimg.com/564x/25/0f/d7/250fd7d90bcb46b73ec95dc5cbb116be.jpg",
+    image: "https://i.pinimg.com/564x/3f/a7/23/3fa723982fd6ae41cadb06bf9453e4d9.jpg",
     category: "Coding"
   },
   {
-    image: "https://i.pinimg.com/564x/d0/fd/68/d0fd686d9f97f4c8ee97e6f722f06ccc.jpg",
-    category: "Robotics"
+    image: "https://i.pinimg.com/564x/39/7a/5b/397a5bface98c898415b1d2ef23be923.jpg",
+    category: "Engineering"
   },
   {
-    image: "https://i.pinimg.com/736x/62/57/9d/62579d17f237d42fa501b82908429ddf.jpg",
-    category: "Photography"
+    image: "https://i.pinimg.com/736x/12/1f/98/121f9882e5f727eb46ef503b59cd3f48.jpg",
+    category: "Art"
   },
   {
-    image: "https://i.pinimg.com/564x/c0/18/a7/c018a756774a46cc5f79f94fc0b7156b.jpg",
+    image: "https://i.pinimg.com/564x/20/ef/69/20ef699a6c3f46ecfb07e99d2f167e4d.jpg",
     category: "Entertainment"
   }
 ];
@@ -40,7 +41,7 @@ const Category = () => {
 
   return (
     <div className="w-full my-9 flex flex-col items-center font-poppins">
-      <h1 className="font-bold text-3xl sm:text-5xl text-white mb-5">Categories</h1>
+      <h1 className="font-bold text-3xl sm:text-5xl text-white mb-5">Explore</h1>
       <div className="relative w-fit mb-3 flex items-center justify-center">
         <Button
           onClick={prevSlide}
@@ -56,8 +57,8 @@ const Category = () => {
               className="w-72 h-64 sm:h-[350px] opacity-70 transform transition-transform duration-700 scale-100 rounded-3xl"
             />
           </div>
-          <div className="-ml-5 -mr-14 z-20 relative">
-            <h1 className="absolute left-1 transform -translate-x-1/2 top-1/2 z-30 -rotate-90 text-white text-4xl font-medium">
+          <Link to={`category/${category[currentIndex].category}`} className="-ml-5 -mr-14 z-20 relative">
+            <h1 className="absolute left-1 transform -translate-x-1/2 top-1/2 z-30 -rotate-90 text-white text-4xl font-bold">
               {category[currentIndex].category}
             </h1>
             <img
@@ -65,7 +66,7 @@ const Category = () => {
               alt="main"
               className="w-[580px] sm:w-96 h-72 sm:h-96 transform transition-transform duration-700 scale-105 -ml-5 -mr-5 z-20 rounded-3xl"
             />
-          </div>
+          </Link>
           <div className="relative">
             <img
               src={category[(currentIndex + 1) % category.length].image}
@@ -81,6 +82,7 @@ const Category = () => {
           <IoIosArrowForward className="text-lg" />
         </Button>
       </div>
+   
     </div>
   );
 };

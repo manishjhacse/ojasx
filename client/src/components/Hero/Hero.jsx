@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Hero.css";
-
+import { GoDash } from "react-icons/go";
 function Hero() {
   const [time, setTime] = useState({
     days: 0,
@@ -10,7 +10,7 @@ function Hero() {
   });
 
   useEffect(() => {
-    const target = new Date("2024-09-13T23:59:59"); // Set your target date and time here
+    const target = new Date("2024-12-25T23:59:59"); // Set your target date and time here
 
     const interval = setInterval(() => {
       const now = new Date();
@@ -42,7 +42,7 @@ function Hero() {
     <section className="text-white bg-black ">
       <div className=" text-center">
         <div className="font-bold font-poppins uppercase text-xl md:text-2xl lg:text-3xl">
-          B.P. Mandal College of Engineering
+          XYZ College of Engineering
         </div>
         <div className="italic font-poppins  opacity-85 text-sm md:text-md ">
           PRESENTS
@@ -72,7 +72,7 @@ function Hero() {
                     <div className="text-2xl md:text-4xl lg:text-6xl">
                       {time.days}
                     </div>
-                    <div className="text-center pt-2 text-sm ">DAY</div>
+                    <div className="text-center pt-2 text-sm ">DAYS</div>
                   </div>
                   <span className="text-3xl md:text-4xl lg:text-6xl  px-1">
                     :
@@ -107,21 +107,22 @@ function Hero() {
             <div className="flex justify-center items-center">
               <div className="p-3 md:p-5">
                 <div className="text-xl md:text-3xl lg:text-4xl font-bold">
-                  2024 September
+                  2024 December
                 </div>
-                <div className="flex justify-center pt-2 gap-4">
+                <div className="flex justify-center pt-2 gap-3 items-center">
                   <div>
-                    <span className="text-xl md:text-3xl lg:text-4xl">14</span>
+                    <span className="text-xl md:text-3xl lg:text-4xl">25</span>
                     <span>
                       <sup className="md:text-lg">TH</sup>
                     </span>
                   </div>
-                  <div className="flex justify-center items-center gap-2 ">
-                    <hr className="w-2 text-neutral-400" />
+                  
+                  <div >
+                    <span className="text-xl md:text-3xl lg:text-4xl">-</span>
                   </div>
                   <div>
-                    <span className="text-xl md:text-3xl lg:text-4xl">20</span>
-                    <sup className="md:text-lg ">TH</sup>
+                    <span className="text-xl md:text-3xl lg:text-4xl">31</span>
+                    <sup className="md:text-lg ">ST</sup>
                   </div>
                 </div>
               </div>

@@ -35,7 +35,7 @@ body {
 
 .about-section {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
 }
 
 .about-text {
@@ -173,7 +173,7 @@ body {
     }
 
     .explore-text {
-        font-size: 1.5em;
+        font-size: 2em;
     }
 }
 
@@ -195,11 +195,11 @@ body {
     }
 
     .about-heading {
-        font-size: 1.5em;
+        font-size: 2em;
     }
 
     .explore-text {
-        font-size: 1.2em;
+        font-size: 2em;
     }
 
     .content-responsive {

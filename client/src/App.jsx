@@ -17,6 +17,8 @@ import MyEvents from "./pages/MyEvents";
 import PrivateRoute from "./components/PrivateRoute";
 import { addMyEvents } from "./store/myEventSlice";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import DetailPage from './pages/DetailPage'
+import CategoryPage from "./pages/CategoryPage";
 export default function App() {
   const token = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -68,6 +70,8 @@ export default function App() {
             <MyEvents />
           </PrivateRoute>
         } />
+        <Route path="/event/:eventId" element={<DetailPage/>}/>
+        <Route path="/category/:category" element={<CategoryPage/>}/>
         <Route path="/paymentsuccess" element={<PaymentSuccess/>} />
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />

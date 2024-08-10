@@ -122,7 +122,7 @@ export default function CartPage() {
     }, [cartEvents])
     useEffect(() => {
         checkIsEnrolled()
-        
+        window.scrollTo(0, 0);
     }, [])
 
 
@@ -160,13 +160,13 @@ export default function CartPage() {
                             </p>
                         </h1>
                         <Link>
-                            <button onClick={handlePayment} className="bg-yellow-500 hover:bg-yellow-600 transition-all duration-200 font-bold  px-4 py-2 mt-2 rounded-lg w-[200px]">
+                            <button onClick={handlePayment} className="text-black bg-violet-500 hover:bg-violet-700 transition-all duration-200 font-bold  px-4 py-2 mt-2 rounded-lg w-[200px]">
                                 Proceed to Buy
                             </button>
                         </Link>
                         <button
                             onClick={() => setShowAlert(true)}
-                            className="bg-red-500 px-3 py-2 mt-2 text-xs rounded-md text-white"
+                            className="bg-red-500 hover:bg-red-700 text-black px-3 py-2 mt-2 text-xs rounded-md  transition-all duration-300 font-bold"
                         >
                             Clear Cart
                         </button>
@@ -178,13 +178,13 @@ export default function CartPage() {
                             <div className="flex gap-5 justify-center">
                                 <button
                                     onClick={handleClearCart}
-                                    className="bg-red-500 px-3 py-2 w-16 mt-2 text-xs rounded-md text-white"
+                                    className="bg-red-500 hover:bg-red-700 text-black px-3 py-2 w-16 mt-2 text-xs rounded-md font-bold "
                                 >
                                     Yes
                                 </button>
                                 <button
                                     onClick={() => setShowAlert(false)}
-                                    className="bg-red-500 px-3 py-2 w-16 mt-2 text-xs rounded-md text-white"
+                                    className="bg-red-500 flex justify-center hover:bg-red-700 text-black px-3 py-2 w-16 mt-2 text-xs rounded-md font-bold "
                                 >
                                     Cancel
                                 </button>

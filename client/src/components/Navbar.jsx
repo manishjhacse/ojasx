@@ -68,6 +68,9 @@ function Navbar() {
             <li>
               <Link to="/">Homepage</Link>
             </li>
+            <li>
+              <Link to="/events">All Events</Link>
+            </li>
             {!loggedIn && (
               <li>
                 <Link to="/login">Login</Link>

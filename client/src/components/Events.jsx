@@ -15,12 +15,12 @@ const Events = () => {
   }, [events]);
   return (
     <div
-      className={`bg-black  font-poppins relative py-5 px-2 sm:px-5 mb-20  flex justify-center `}
+      className={`bg-black  font-poppins relative py-3 px-2 sm:px-5 mb-20  flex justify-center `}
     >
       <h1 className=" absolute top-2 z-10 font-bold text-5xl  text-white ">
         Events
       </h1>
-      <div className=" w-[900px] flex mb-9 mt-16 flex-wrap gap-4  justify-center">
+      <div className=" w-[900px] flex mb-9  mt-16 flex-wrap gap-4 flex-shrink justify-center">
         {eventsToShow.length > 0 ?
           eventsToShow.slice(0, 5)?.map((event) => (
             <Cards key={event._id} event={event} fromCart={false} />
@@ -45,7 +45,7 @@ const Events = () => {
         radius="full"
         className="w-fit absolute bottom-0 z-20 font-semibold focus:outline-none shadow-xl"
       >
-        More Events
+        All Events
       </Button>
     </div>
   );

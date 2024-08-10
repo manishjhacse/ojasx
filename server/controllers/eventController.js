@@ -19,6 +19,7 @@ exports.addEvent = async (req, res) => {
   try {
     const {
       about,
+      event_date,
       registration_price,
       event_managers,
       winner_prize,
@@ -44,6 +45,7 @@ exports.addEvent = async (req, res) => {
     }
     const event = await Event.create({
       about,
+      event_date,
       registration_price,
       event_managers: event_managersObj,
       winner_prize,
