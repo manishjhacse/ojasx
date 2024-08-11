@@ -43,7 +43,7 @@ export default function App({ event, fromCart }) {
   }
 
   return (
-      <Card className="col-span-12 relative sm:col-span-4 md:h-[300px] md:w-[240px] h-[250px] w-[200px]">
+      <Card className="col-span-12 relative sm:col-span-4 h-[300px] w-[240px]">
         {/* <CardHeader className="absolute z-20 top-1 flex-col !items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">
             What to watch
