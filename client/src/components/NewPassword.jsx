@@ -3,7 +3,7 @@ import React from "react";
 export default function NewPassword({ formData, handleChange }) {
   return (
     <div className="text-black flex flex-col justify-center items-center gap-3">
-      <div className="text-black">
+      <div className="text-black flex flex-col items-start">
         <label htmlFor="code">OTP:</label>
         <input
           id="code"
@@ -15,7 +15,7 @@ export default function NewPassword({ formData, handleChange }) {
           onChange={handleChange}
         />
       </div>
-      <div className="text-black">
+      <div className="text-black flex flex-col">
         <label htmlFor="password">Password</label>
         <input
           id="password"
@@ -27,7 +27,7 @@ export default function NewPassword({ formData, handleChange }) {
           onChange={handleChange}
         />
       </div>
-      <div className="text-black">
+      <div className="text-black flex flex-col">
         <label htmlFor="confirmPassword">Confirm password</label>
         <input
           id="confirmPassword"

@@ -68,11 +68,11 @@ export default function ChangePassword() {
   }
   return (
     <div className=" px-3 text-black flex justify-center items-center font-poppins min-h-screen overflow-hidden">
-      <div className="overflow-hidden bg-white  w-[300px]  px-10  backdrop rounded-2xl border-5 border-yellow-400">
+      <div className="overflow-hidden bg-white  w-[300px]  md:px-10  backdrop rounded-2xl border-5 border-yellow-400">
         <form className="text-black flex flex-col py-12 justify-center items-center gap-4">
-          <h1 className="text-xl font-bold mb-5">Reset Password</h1>
+          <h1 className="text-xl font-bold">Reset Password</h1>
           {!optSent && (
-            <div className="text-black">
+            <div className="text-black flex flex-col items-start">
               <label htmlFor="email">Email:</label>
               <input
                 id="email"
