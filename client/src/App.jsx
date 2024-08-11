@@ -56,7 +56,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/createevent" element={<CreateEvent />} />
+        {/* <Route path="/createevent" element={<CreateEvent />} /> */}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/changepassword" element={<ChangePassword />} />
