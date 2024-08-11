@@ -100,7 +100,7 @@ export default function App({ event, fromCart }) {
         </CardFooter>
       
       
-      <span className="absolute top-0 right-0 flex items-center bg-red-500 px-2 py-1 rounded-l-full z-50"><FaRupeeSign />{event?.registration_price}</span>
+      <span className="absolute top-0 right-0 flex items-center bg-red-500 px-2 py-1 rounded-l-full z-40"><FaRupeeSign />{event?.registration_price}</span>
       </Card>
     
   );
