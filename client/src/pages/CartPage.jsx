@@ -33,14 +33,16 @@ export default function CartPage() {
 
     const handlePayment = async () => {
         try {
+            setPaymentProcessing(true)
             const url = import.meta.env.VITE_BASE_URL;
             const res = await axios.post(`${url}/order`, { amount: totalAmount }, {
                 withCredentials: true
             })
             await handlePaymentVerify(res.data.data);
-
+            setPaymentProcessing(false)
         } catch (error) {
             console.log(error);
+            setPaymentProcessing(false)
         }
     }
     const handlePaymentVerify = async (data) => {

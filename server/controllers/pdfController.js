@@ -84,9 +84,7 @@ exports.createPdf = async (req, res) => {
 };
 
 exports.fetchPdf = (req, res) => {
-  res.sendFile(
-    path.join(path.dirname(__dirname), "pdfs", `${req.body.userId}.pdf`)
-  );
+//  const user
 };
 
 exports.sendPdf = async (req, res) => {
