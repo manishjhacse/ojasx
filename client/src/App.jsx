@@ -23,6 +23,7 @@ export default function App() {
   const token = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   const dispatch = useDispatch();
+  const loggedIn = useSelector(state => state.loggedIn)
   const isLoggedIn = () => {
     if (token !== null) {
       dispatch(changeLoggedIn(true));
@@ -47,7 +48,9 @@ export default function App() {
   }
   useEffect(() => {
     isLoggedIn();
-    getUserEvents();
+    if (loggedIn) {
+      getUserEvents();
+    }
     getAllEvents();
   }, []);
   return (
@@ -61,18 +64,18 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/mycart" element={
-          <PrivateRoute>
-            <CartPage />
-          </PrivateRoute>} />
+
+          <CartPage />
+        } />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/myevents" element={
           <PrivateRoute>
             <MyEvents />
           </PrivateRoute>
         } />
-        <Route path="/event/:eventId" element={<DetailPage/>}/>
-        <Route path="/category/:category" element={<CategoryPage/>}/>
-        <Route path="/paymentsuccess" element={<PaymentSuccess/>} />
+        <Route path="/event/:eventId" element={<DetailPage />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
+        <Route path="/paymentsuccess" element={<PaymentSuccess />} />
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
     </div>

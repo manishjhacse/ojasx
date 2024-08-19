@@ -8,12 +8,12 @@ import Footer from "../components/Footer";
 import FAQ from "../components/FAQ";
 import axios from "axios";
 import { addMyEvents } from "../store/myEventSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 export default function HomePage() {
   const token = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   const dispatch = useDispatch();
-  
+  const loggedIn = useSelector(state => state.loggedIn)
   const getUserEvents = async () => {
     const url = import.meta.env.VITE_BASE_URL;
     try {
@@ -25,8 +25,10 @@ export default function HomePage() {
     }
   }
   useEffect(() => {
-    getUserEvents();
-  }, []);
+    if (loggedIn) {
+      getUserEvents();
+    }
+  }, [loggedIn]);
   return (
     <div>
       {/* <Events/> */}

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Cards from '../components/Cards'
 import { PiCurrencyInrBold } from "react-icons/pi";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { clearCart, removeFromCart } from '../store/cartSlice';
 import axios from 'axios';
 
 export default function CartPage() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const [paymentProcessing, setPaymentProcessing] = useState(false)
     const loggedIn = useSelector(state => state.loggedIn)
     const loggedInUser = useSelector(state => state.loggedInUser);
@@ -32,6 +32,11 @@ export default function CartPage() {
 
 
     const handlePayment = async () => {
+
+        if (!loggedIn) {
+            navigate("/login")
+            return;
+        }
         try {
             setPaymentProcessing(true)
             const url = import.meta.env.VITE_BASE_URL;
@@ -120,7 +125,7 @@ export default function CartPage() {
     }
     useEffect(() => {
         setAmount();
-        
+
     }, [cartEvents])
     useEffect(() => {
         checkIsEnrolled()
@@ -161,11 +166,10 @@ export default function CartPage() {
                                 <PiCurrencyInrBold /> {totalAmount}
                             </p>
                         </h1>
-                        <Link>
-                            <button onClick={handlePayment} className="text-black bg-violet-500 hover:bg-violet-700 transition-all duration-200 font-bold  px-4 py-2 mt-2 rounded-lg w-[200px]">
-                                Proceed to Buy
-                            </button>
-                        </Link>
+                        <button onClick={handlePayment} className="text-black bg-violet-500 hover:bg-violet-700 transition-all duration-200 font-bold  px-4 py-2 mt-2 rounded-lg w-[200px]">
+                            Proceed to Buy
+                        </button>
+
                         <button
                             onClick={() => setShowAlert(true)}
                             className="bg-red-500 hover:bg-red-700 text-black px-3 py-2 mt-2 text-xs rounded-md  transition-all duration-300 font-bold"

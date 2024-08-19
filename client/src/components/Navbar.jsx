@@ -8,6 +8,7 @@ import { changeLoggedInUser } from "../store/userSlice";
 import { changeLoggedIn } from "../store/loginSlice";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { removeMyEvents } from "../store/myEventSlice";
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ function Navbar() {
         localStorage.removeItem("isloggedinUser");
         localStorage.removeItem("loggedInUser");
         dispatch(changeLoggedInUser({}));
+        dispatch(removeMyEvents())
         dispatch(changeLoggedIn(false));
         toast.success("Logged Out");
         navigate("/");
