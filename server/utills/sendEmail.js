@@ -4,11 +4,17 @@ require("dotenv").config();
 module.exports = async (email, subject, text) => {
   try {
     const transporter = nodemailer.createTransport({
-      service: "hotmail",
+      // service: "hotm2qail",
+      secure: true,
+      host: "smtp.gmail.com",
+      port: 465,
       auth: {
         user: process.env.EMAILID,
         pass: process.env.EMAILPASSWORD,
       },
+      //   tls: {
+      //     minVersion: 'TLSv1.2',
+      //   },
     });
     
     await transporter.sendMail({
