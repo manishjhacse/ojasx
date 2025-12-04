@@ -1,32 +1,23 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 require("dotenv").config();
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = async (email, subject, text) => {
   try {
-    const transporter = nodemailer.createTransport({
-      // service: "hotm2qail",
-      secure: true,
-      host: "smtp.gmail.com",
-      port: 465,
-      auth: {
-        user: process.env.EMAILID,
-        pass: process.env.EMAILPASSWORD,
-      },
-      //   tls: {
-      //     minVersion: 'TLSv1.2',
-      //   },
-    });
-    
-    await transporter.sendMail({
-      from: process.env.EMAILID,
+    const data = await resend.emails.send({
+      from: "OTP Service <onboarding@resend.dev>",   
       to: email,
       subject: subject,
       text: text,
     });
+
     return {
       success: true,
       message: "OTP Sent",
+      data
     };
+
   } catch (err) {
     return {
       success: false,
